@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;NUME:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>230</y>
+      <width>111</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;PRENUME:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>380</y>
+      <width>141</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;AN DE STUDIU:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>430</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;FACULTATE:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>330</y>
+      <width>211</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;NUMAR DE TELEFON:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>121</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;PRENUME 2:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="AcWo_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>230</y>
+      <width>191</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Segoe UI</family>
+      <pointsize>14</pointsize>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+	font: 700 14pt &quot;Segoe UI&quot;;
+    color: white; 
+}
+</string>
+    </property>
+    <property name="text">
+     <string notr="true">AirCraft Workshop</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="NUME_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>170</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="PRENUME_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>220</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="PRENUME_2_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>270</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="NUMAR_DE_TELEFON_lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>320</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="AN_DE_STUDIU_comboBox">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>380</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>I</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>II</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>III</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>IV</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="FACULTATE_comboBox">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>420</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie Electrică</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Energetică</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Automatică și Calculatoare</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Electronică, Telecomunicații și Tehnologia Informației</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie Mecanică și Mecatronică</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie Industrială și Robotică</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Ingineria Sistemelor Biotehnice</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Transporturi</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie Aerospațială</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Știința și Ingineria Materialelor</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie Chimică și Biotehnologii</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie în Limbi Străine</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Științe Aplicate</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Inginerie Medicală</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Facultatea de Antreprenoriat, Ingineria și Managementul Afacerilor</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QCheckBox" name="DroWo_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>340</y>
+      <width>171</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+	font: 700 14pt &quot;Segoe UI&quot;;
+    color: white; 
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Drone Workshop</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="RoWo_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>380</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+	font: 700 14pt &quot;Segoe UI&quot;;
+    color: white; 
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Rocket Workshop</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="HSS_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>270</y>
+      <width>191</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+	font: 700 14pt &quot;Segoe UI&quot;;
+    color: white; 
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Head Start Session</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="WiCa_checkBox">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>310</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QCheckBox {
+	font: 700 14pt &quot;Segoe UI&quot;;
+    color: white; 
+}
+</string>
+    </property>
+    <property name="text">
+     <string>Winter Camp</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>180</y>
+      <width>351</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;LA CE EVENIMENTE VEI PARTICIPA?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>480</y>
+      <width>161</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:700; color:#ffffff;&quot;&gt;DEPARTAMENT:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="DEPARTAMENT_comboBox">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>470</y>
+      <width>71</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}
+
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>IT</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>MARKETING</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>LEGAL</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>TEHNIC</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>EVENTS</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_9_LOGO">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>350</y>
+      <width>251</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="logo.qrc">:/newPrefix/EUROAVIA_Logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_BACKGROUND">
+    <property name="geometry">
+     <rect>
+      <x>-20</x>
+      <y>-10</y>
+      <width>831</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/newPrefix/EUROAVIA_Logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_upb_logo">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>20</y>
+      <width>341</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="logo.qrc">:/newPrefix/1643641029799.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_plane_logo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>171</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="logo.qrc">:/newPrefix/plane-semi-flat-b2d996.webp</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>50</y>
+      <width>271</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:700; text-decoration: underline; color:#ffffff;&quot;&gt;FORMULAR INSCRIERE&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>110</y>
+      <width>201</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:700; color:#ffffff;&quot;&gt;EUROAVIA 2024-2025&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>460</y>
+      <width>161</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border-radius: 15px; /* Valoarea aceasta o poți ajusta pentru a obține rotunjimea dorită */
+    border: 2px solid #ADD8E6; /* Bordura butonului */
+    background-color:#ADD8E6; /* Culoarea de fundal a butonului */
+    color: white; /* Culoarea textului */
+    padding: 5px; /* Spațierea internă */
+}
+QPushButton:hover {
+    background-color: #87CEEB; /* Culoarea de fundal când mouse-ul este deasupra butonului */
+}
+
+QPushButton:pressed {
+    background-color: #5FA9D0; /* Culoarea de fundal când butonul este apăsat */
+    border: 2px solid #5FA9D0; /* Bordura butonului când este apăsat */
+}</string>
+    </property>
+    <property name="text">
+     <string>INSCRIE-TE!</string>
+    </property>
+   </widget>
+   <zorder>label_BACKGROUND</zorder>
+   <zorder>label_9_LOGO</zorder>
+   <zorder>label</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
+   <zorder>AcWo_checkBox</zorder>
+   <zorder>NUME_lineEdit</zorder>
+   <zorder>PRENUME_lineEdit</zorder>
+   <zorder>PRENUME_2_lineEdit</zorder>
+   <zorder>NUMAR_DE_TELEFON_lineEdit</zorder>
+   <zorder>AN_DE_STUDIU_comboBox</zorder>
+   <zorder>FACULTATE_comboBox</zorder>
+   <zorder>DroWo_checkBox</zorder>
+   <zorder>RoWo_checkBox</zorder>
+   <zorder>HSS_checkBox</zorder>
+   <zorder>WiCa_checkBox</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_8</zorder>
+   <zorder>DEPARTAMENT_comboBox</zorder>
+   <zorder>label_upb_logo</zorder>
+   <zorder>label_plane_logo</zorder>
+   <zorder>label_11</zorder>
+   <zorder>label_12</zorder>
+   <zorder>pushButton</zorder>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="logo.qrc"/>
+ </resources>
+ <connections/>
+</ui>

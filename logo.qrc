@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="newPrefix">
+    <file>1643641029799.png</file>
+    <file>EUROAVIA_Logo.png</file>
+    <file>plane-semi-flat-b2d996.webp</file>
+  </qresource>
+</RCC>

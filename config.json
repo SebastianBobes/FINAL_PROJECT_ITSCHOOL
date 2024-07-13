@@ -1,0 +1,16 @@
+{
+  "config_db": {
+        "host": "localhost",
+        "user": "postgres",
+        "database": "postgres",
+        "password": "parola",
+        "port": 5432
+              },
+  "departments_id":{
+    "IT": 1,
+    "MARKETING": 2,
+    "LEGAL": 3,
+    "TEHNIC": 4,
+    "EVENTS": 5
+                  }
+}
