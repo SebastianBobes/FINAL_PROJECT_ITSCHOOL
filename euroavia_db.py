@@ -3,7 +3,6 @@ import psycopg2 as ps
 from Members import Member
 
 
-
 def execute_query(sql_query: str, config: dict):
     try:
         with ps.connect(**config) as conn:
