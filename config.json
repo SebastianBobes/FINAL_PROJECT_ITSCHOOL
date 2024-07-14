@@ -12,5 +12,12 @@
     "LEGAL": 3,
     "TEHNIC": 4,
     "EVENTS": 5
+                  },
+  "event_id":{
+    "AirCraft Workshop": 1,
+    "Head Start Session": 2,
+    "Winter Camp": 3,
+    "Drone Workshop": 4,
+    "Rocket Workshop": 5
                   }
 }
