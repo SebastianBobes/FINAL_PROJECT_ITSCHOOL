@@ -10,8 +10,8 @@ from tkinter import messagebox
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
 
-from Members import Member
 import euroavia_db
+from Members import Member
 
 
 class Ui_MainWindow(object):
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
         self.AcWo_checkBox = QtWidgets.QCheckBox(parent=self.centralwidget)
-        self.AcWo_checkBox.setGeometry(QtCore.QRect(550, 230, 191, 21))
+        self.AcWo_checkBox.setGeometry(QtCore.QRect(540, 230, 201, 21))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(14)
@@ -69,9 +69,33 @@ class Ui_MainWindow(object):
         self.AcWo_checkBox.setFont(font)
         self.AcWo_checkBox.setStyleSheet("QCheckBox {\n"
 "    font: 700 14pt \"Segoe UI\";\n"
-"    color: white; \n"
+"    color: white;\n"
 "}\n"
-"")
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid white;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid white;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover,\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    border: 2px solid lightgray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed,\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    border: 2px solid gray;\n"
+"}")
         self.AcWo_checkBox.setText("AirCraft Workshop")
         self.AcWo_checkBox.setObjectName("AcWo_checkBox")
         self.NUME_lineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
@@ -170,36 +194,132 @@ class Ui_MainWindow(object):
         self.FACULTATE_comboBox.addItem("")
         self.FACULTATE_comboBox.addItem("")
         self.DroWo_checkBox = QtWidgets.QCheckBox(parent=self.centralwidget)
-        self.DroWo_checkBox.setGeometry(QtCore.QRect(410, 340, 171, 20))
+        self.DroWo_checkBox.setGeometry(QtCore.QRect(390, 340, 191, 20))
         self.DroWo_checkBox.setStyleSheet("QCheckBox {\n"
 "    font: 700 14pt \"Segoe UI\";\n"
-"    color: white; \n"
+"    color: white;\n"
 "}\n"
-"")
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid white;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid white;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover,\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    border: 2px solid lightgray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed,\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    border: 2px solid gray;\n"
+"}")
         self.DroWo_checkBox.setObjectName("DroWo_checkBox")
         self.RoWo_checkBox = QtWidgets.QCheckBox(parent=self.centralwidget)
-        self.RoWo_checkBox.setGeometry(QtCore.QRect(600, 380, 161, 20))
+        self.RoWo_checkBox.setGeometry(QtCore.QRect(570, 380, 191, 20))
         self.RoWo_checkBox.setStyleSheet("QCheckBox {\n"
 "    font: 700 14pt \"Segoe UI\";\n"
-"    color: white; \n"
+"    color: white;\n"
 "}\n"
-"")
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid white;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid white;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover,\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    border: 2px solid lightgray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed,\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    border: 2px solid gray;\n"
+"}")
         self.RoWo_checkBox.setObjectName("RoWo_checkBox")
         self.HSS_checkBox = QtWidgets.QCheckBox(parent=self.centralwidget)
         self.HSS_checkBox.setGeometry(QtCore.QRect(400, 270, 191, 20))
         self.HSS_checkBox.setStyleSheet("QCheckBox {\n"
 "    font: 700 14pt \"Segoe UI\";\n"
-"    color: white; \n"
+"    color: white;\n"
 "}\n"
-"")
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid white;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid white;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover,\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    border: 2px solid lightgray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed,\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    border: 2px solid gray;\n"
+"}")
         self.HSS_checkBox.setObjectName("HSS_checkBox")
         self.WiCa_checkBox = QtWidgets.QCheckBox(parent=self.centralwidget)
-        self.WiCa_checkBox.setGeometry(QtCore.QRect(600, 310, 141, 20))
+        self.WiCa_checkBox.setGeometry(QtCore.QRect(590, 310, 171, 20))
         self.WiCa_checkBox.setStyleSheet("QCheckBox {\n"
 "    font: 700 14pt \"Segoe UI\";\n"
-"    color: white; \n"
+"    color: white;\n"
 "}\n"
-"")
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    border: 2px solid white;\n"
+"    background-color: transparent;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    border: 2px solid white;\n"
+"    background-color: white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover,\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    border: 2px solid lightgray;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed,\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    border: 2px solid gray;\n"
+"}")
         self.WiCa_checkBox.setObjectName("WiCa_checkBox")
         self.label_7 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_7.setGeometry(QtCore.QRect(330, 180, 351, 41))
@@ -393,34 +513,28 @@ class Ui_MainWindow(object):
             messagebox.showerror("ERROR", "NUME INVALID!")
             self.NUME_lineEdit.clear()
             return False
-        elif len(last_name) <3 or len(last_name) > 20:
+        elif len(last_name) < 3 or len(last_name) > 20:
             messagebox.showerror("ERROR", "NUME INVALID!")
             self.NUME_lineEdit.clear()
             return False
         else:
-            last_name = last_name[0].upper()+last_name[1::].lower()
-
-
-
-
+            last_name = last_name[0].upper() + last_name[1::].lower()
 
         first_name = self.PRENUME_lineEdit.text()
         if not first_name.isalpha():
             messagebox.showerror("ERROR", "PRENUME INVALID!")
             self.PRENUME_lineEdit.clear()
             return False
-        elif len(first_name) <3 or len(first_name) > 20:
+        elif len(first_name) < 3 or len(first_name) > 20:
             messagebox.showerror("ERROR", "PRENUME INVALID!")
             self.PRENUME_lineEdit.clear()
         else:
             first_name = first_name[0].upper() + first_name[1::].lower()
 
-
-
         middle_name = self.PRENUME_2_lineEdit.text()
-        if len(middle_name) < 3 and middle_name.isalpha()==False:
+        if len(middle_name) < 3 and middle_name.isalpha() == False:
             middle_name = ''
-        elif len(middle_name) >3 and middle_name.isalpha()==False:
+        elif len(middle_name) > 3 and middle_name.isalpha() == False:
             messagebox.showerror("ERROR", "PRENUME 2 INVALID!")
             self.PRENUME_2_lineEdit.clear()
             return False
@@ -429,9 +543,6 @@ class Ui_MainWindow(object):
             self.PRENUME_2_lineEdit.clear()
         else:
             middle_name = middle_name[0].upper() + middle_name[1::].lower()
-
-
-
 
         telephone_number = self.NUMAR_DE_TELEFON_lineEdit.text()
         if telephone_number.isdigit() == False:
@@ -442,18 +553,14 @@ class Ui_MainWindow(object):
             messagebox.showerror("ERROR", "NUMAR DE TELEFON INVALID!")
             self.NUMAR_DE_TELEFON_lineEdit.clear()
             return False
-        elif euroavia_db.unicity_checker(telephone_number,'telephone_number') == True:
+        elif euroavia_db.unicity_checker(telephone_number, 'telephone_number') == True:
             messagebox.showerror("ERROR", "NUMARUL DE TELEFON EXISTA! INTRODUCETI ALTUL!")
             self.NUMAR_DE_TELEFON_lineEdit.clear()
             return False
 
-
-
-
         study_year = self.AN_DE_STUDIU_comboBox.currentText()
         college = self.FACULTATE_comboBox.currentText()
         department = self.DEPARTAMENT_comboBox.currentText()
-
 
         with open("config.json", 'r') as f:
             department_id = json.loads(f.read())['departments_id'][department]
@@ -462,9 +569,9 @@ class Ui_MainWindow(object):
         if self.RoWo_checkBox.isChecked(): events.append(self.RoWo_checkBox.text())
         if self.HSS_checkBox.isChecked(): events.append(self.HSS_checkBox.text())
         if self.WiCa_checkBox.isChecked(): events.append(self.WiCa_checkBox.text())
-        member = Member(last_name=last_name,first_name=first_name,
-                        middle_name=middle_name,telephone_number=telephone_number,
-                        study_year=study_year,college=college,
+        member = Member(last_name=last_name, first_name=first_name,
+                        middle_name=middle_name, telephone_number=telephone_number,
+                        study_year=study_year, college=college,
                         department_id=department_id, events=events)
         if euroavia_db.unicity_checker(member.email, 'email_address') == True:
             messagebox.showerror("ERROR", f"{last_name} {first_name} {middle_name} exista!")
@@ -473,8 +580,8 @@ class Ui_MainWindow(object):
             self.PRENUME_2_lineEdit.clear()
             return False
         else:
-            euroavia_db.insert_member_into_db(member = member)
-            euroavia_db.add_events_for_member(member = member, events=events)
+            euroavia_db.insert_member_into_db(member=member)
+            euroavia_db.add_events_for_member(member=member, events=events)
             messagebox.showinfo(title='', message=f"TE-AI INSCRIS CU SUCCES!")
             self.NUME_lineEdit.clear()
             self.PRENUME_lineEdit.clear()
@@ -491,20 +598,3 @@ class Ui_MainWindow(object):
             return True
 
 
-
-
-
-
-
-
-
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    sys.exit(app.exec())
