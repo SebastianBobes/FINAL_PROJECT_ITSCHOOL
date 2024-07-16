@@ -495,6 +495,8 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-size:14pt; font-weight:700; color:#ffffff;\">EUROAVIA 2024-2025</span></p></body></html>"))
         self.pushButton.setText(_translate("MainWindow", "INSCRIE-TE!"))
 
+
+
         qpixmap = QPixmap("EUROAVIA_Logo.png")
         self.label_BACKGROUND.setPixmap(qpixmap)
         qpixmap = QPixmap("plane-semi-flat-b2d996.webp")

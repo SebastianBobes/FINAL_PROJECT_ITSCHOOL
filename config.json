@@ -19,5 +19,14 @@
     "Winter Camp": 3,
     "Drone Workshop": 4,
     "Rocket Workshop": 5
-                  }
+                  },
+
+
+  "study_years": {
+    "1": "I",
+    "2": "II",
+    "3": "III",
+    "4": "IV"
+
+  }
 }

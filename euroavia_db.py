@@ -9,10 +9,10 @@ from Members import Member
 #dar doar la dep lui poate sa faca insert, update
 #doar supervizorul departamentului poate face delete
 
-#sa vezi cati s au inscris la un eveniment
-#sa vezi cati oameni sunt la un anumit departament
-#sa vezi la ce evenimente a participat un anumit membru
-#sa dai un an de la 1 la 4 sa vezi cati membrii sunt de la anul citit de la tast
+#sa vezi cati s au inscris la un eveniment----
+#sa vezi cati oameni sunt la un anumit departament----
+#sa vezi la ce evenimente a participat un anumit membru----
+#sa dai un an de la 1 la 4 sa vezi cati membrii sunt de la anul citit de la tast---
 
 
 #sa stergi un eveniment la care un membru nu mai vine
@@ -147,14 +147,63 @@ def see_how_many_at_a_department():
             number_of_members = cursor.fetchall()[0][0]
             print(f"In departamentul {my_dict[int(dep_id)]} sunt {number_of_members} euroavieni!")
 
+def see_events_for_member(path = 'config.json'):
+    config = read_config()
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = ("select id, last_name, first_name from euroavia.members ")
+            cursor.execute(sql_query)
+            x = cursor.fetchall()
+            my_dict = {}
+            for dep in x:
+                my_dict[dep[0]] = dep[1],dep[2]
+                print(f"{dep[0]}.{dep[1]} {dep[2]}")
+            member_id  = input('Dati un id:')
+            while member_id.isdigit() == False or int(member_id) not in list(my_dict.keys()):
+                member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+            sql_query = (f"select event_id from euroavia.events_members where member_id ={int(member_id)}")
+            cursor.execute(sql_query)
+            events = cursor.fetchall()
+            try:
+                with open(path, 'r') as f:
+                    event_ids = json.loads(f.read())['event_id']
+            except Exception as e:
+                print(f"Failed reading event_ids from file! {e}")
+            event_ids_swap = {v: k for k, v in event_ids.items()}
+            print(f"\n{dep[1]} {dep[2]} a participat la: " )
+            for item in events:
+                    print(f"\t\t\t-{event_ids_swap[item[0]]}")
+
+def see_how_many_from_a_study_year(path: str = "config.json"):
+    config = read_config()
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            with open(path, 'r') as f:
+                study_years = json.loads(f.read())['study_years']
+            study_year = input("Introduceti un an de la 1 la 4: ")
+            while study_year.isdigit() == False or study_year not in study_years.keys():
+                study_year = input("An inexistent! Introduceti un an de la 1 la 4: ")
+
+            sql_query = (f"select id, last_name, first_name from euroavia.members where study_year = '{study_years[study_year]}' ")
+            cursor.execute(sql_query)
+            members = cursor.fetchall()
+            print(f"\nStudentii care sunt in anul {study_years[study_year]}:  ")
+            for member in members:
+                print(f"\t{member[0]}. {member[1]} {member[2]}")
+
+
+
 
 
 
 
 
 if __name__ == '__main__':
-    see_how_many_at_a_event()
-    see_how_many_at_a_department()
+    # see_how_many_at_a_event()
+    # see_how_many_at_a_department()
+    #see_events_for_member()
+    see_how_many_from_a_study_year()
+
 
 
 
