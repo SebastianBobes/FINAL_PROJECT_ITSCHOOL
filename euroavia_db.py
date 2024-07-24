@@ -170,9 +170,14 @@ def see_events_for_member(path = 'config.json'):
             except Exception as e:
                 print(f"Failed reading event_ids from file! {e}")
             event_ids_swap = {v: k for k, v in event_ids.items()}
-            print(f"\n{dep[1]} {dep[2]} a participat la: " )
+            print(f"\n{my_dict[int(member_id)][0]} {my_dict[int(member_id)][1]} a participat la: " )
+            id_and_events = {}
+            event_list = []
             for item in events:
-                    print(f"\t\t\t-{event_ids_swap[item[0]]}")
+                    event_list.append(str(item[0]))
+                    print(f"\t\t\t{item[0]}.{event_ids_swap[item[0]]}")
+            id_and_events[member_id] = event_list
+            return id_and_events
 
 def see_how_many_from_a_study_year(path: str = "config.json"):
     config = read_config()
@@ -191,6 +196,25 @@ def see_how_many_from_a_study_year(path: str = "config.json"):
             for member in members:
                 print(f"\t{member[0]}. {member[1]} {member[2]}")
 
+def delete_event_for_member():
+    id_and_events = see_events_for_member()
+    member_id = list(id_and_events.keys())[0]
+    events = list(id_and_events.values())[0]
+
+    id_to_del =input("Dati id-ul evenimentului la care membrul nu va mai participa: ")
+    while id_to_del not in events:
+        id_to_del = input("Id invalid! Dati id-ul: ")
+
+    try:
+        config = read_config()
+        with ps.connect(**config) as conn:
+            with conn.cursor() as cursor:
+                sql_query = (f"delete from euroavia.events_members where (event_id = {id_to_del} and member_id={member_id})")
+                cursor.execute(sql_query)
+    except Exception as e:
+        print(f"Eroare! Stergerea nu a fost realizata ! {e}")
+    else:
+        print("Stergerea a fost realizata cu succes!")
 
 
 
@@ -202,7 +226,8 @@ if __name__ == '__main__':
     # see_how_many_at_a_event()
     # see_how_many_at_a_department()
     #see_events_for_member()
-    see_how_many_from_a_study_year()
+    # see_how_many_from_a_study_year()
+    delete_event_for_member()
 
 
 
