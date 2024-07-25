@@ -7,7 +7,7 @@ from Members import Member
 #membru din lb sa faca insert, update, select
 #head poate sa faca select la orice dep
 #dar doar la dep lui poate sa faca insert, update
-#doar supervizorul departamentului poate face delete
+
 
 #sa vezi cati s au inscris la un eveniment----
 #sa vezi cati oameni sunt la un anumit departament----
@@ -15,11 +15,19 @@ from Members import Member
 #sa dai un an de la 1 la 4 sa vezi cati membrii sunt de la anul citit de la tast---
 
 
-#sa stergi un eveniment la care un membru nu mai vine
-#sa adaugi un eveniment la care un membru sa vina
+#sa stergi un eveniment la care un membru nu mai vine---
+#sa adaugi un eveniment la care un membru sa vina---
 
 
-#sa stergi un membru - doar supervizorul departamentului
+#sa stergi un membru - doar supervizorul departamentului---
+#sa muti membrul de la un departament la altul---
+#cati studenti de la fiecare facultate
+
+
+#functie pentru a afisa toti membrii
+#functie pt a afisa departamentele
+#functie pentru a afisa evenimentele
+#functie sa citeasca departamentele, evenimentele si id urile din db
 
 def read_config(path: str = 'config.json'):
     try:
@@ -28,6 +36,15 @@ def read_config(path: str = 'config.json'):
             return config
     except Exception as e:
         print(f"Error on reading config file! {e}")
+
+def read_faculties(path: str = 'config.json'):
+    try:
+        with open(path, 'r') as f:
+            faculties = json.loads(f.read())['faculties']
+            return faculties
+    except Exception as e:
+        print(f"Error on reading from current file! {e}")
+
 
 
 def execute_query(sql_query: str, config: dict):
@@ -39,6 +56,8 @@ def execute_query(sql_query: str, config: dict):
     except Exception as e:
         print(f"Failure on reading from database. Error: {e}")
         return False
+
+
 
 def insert_member_into_db(member: Member) -> bool:
     config = read_config()
@@ -106,7 +125,6 @@ def unicity_checker(parameter: str, category: str) ->bool:
 
 
 
-#cati s au inscris la un eveniment anume
 def see_how_many_at_a_event():
     config = read_config()
     with ps.connect(**config) as conn:
@@ -170,7 +188,7 @@ def see_events_for_member(path = 'config.json'):
             except Exception as e:
                 print(f"Failed reading event_ids from file! {e}")
             event_ids_swap = {v: k for k, v in event_ids.items()}
-            print(f"\n{my_dict[int(member_id)][0]} {my_dict[int(member_id)][1]} a participat la: " )
+            print(f"\n{my_dict[int(member_id)][0]} {my_dict[int(member_id)][1]} va participa la: " )
             id_and_events = {}
             event_list = []
             for item in events:
@@ -216,6 +234,113 @@ def delete_event_for_member():
     else:
         print("Stergerea a fost realizata cu succes!")
 
+def add_event_for_member(path:str = 'config.json'):
+    id_and_events = see_events_for_member()
+    events = list(id_and_events.values())[0]
+    member_id = list(id_and_events.keys())[0]
+    config = read_config()
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = ("select event_id, name from euroavia.events ")
+            cursor.execute(sql_query)
+            x = cursor.fetchall()
+            list_of_available_ids = []
+            for event_id in events:
+                for item in x:
+                    if event_id == str(item[0]):
+                        x.remove(item)
+
+            my_dict = {}
+            print("Evenimentele la care membrul nu participa sunt: ")
+            for dep in x:
+                my_dict[dep[0]] = dep[1]
+                print(f"\t\t\t{dep[0]}.{dep[1]}")
+                list_of_available_ids.append(str(dep[0]))
+            if len(list_of_available_ids) == 0:
+                print("Membrul participa la toate evenimentele!")
+                exit()
+            user_pick = input("Dati id-ul evenimentului la care va participa membrul: ")
+            while user_pick not in list_of_available_ids:
+                user_pick = input("Id invalid! Dati id-ul: ")
+
+            sql_query = (f"insert into euroavia.events_members (event_id,member_id) values({int(user_pick)}, {member_id}) ")
+            try:
+                cursor.execute(sql_query)
+            except Exception as e:
+                print("Failed on addid event for member! ")
+            else:
+                print("Eveniment adaugat!")
+
+def delete_member():
+    config = read_config()
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = ("select id, last_name, first_name from euroavia.members ")
+            cursor.execute(sql_query)
+            x = cursor.fetchall()
+            my_dict = {}
+            for dep in x:
+                my_dict[dep[0]] = dep[1], dep[2]
+                print(f"{dep[0]}.{dep[1]} {dep[2]}")
+            member_id = input('Dati un id:')
+            while member_id.isdigit() == False or int(member_id) not in list(my_dict.keys()):
+                member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+
+            sql_query = (f"delete from euroavia.members where id = {member_id}")
+            try:
+                cursor.execute(sql_query)
+            except Exception as e:
+                print(f"Error on deleting member! {e}")
+            else:
+                print("Membrul a fost sters!")
+
+def replace_member_to_another_dep():
+    config = read_config()
+    with ps.connect(**config) as conn:
+        with conn.cursor() as cursor:
+            sql_query = ("select id, last_name, first_name, department_id from euroavia.members ")
+            cursor.execute(sql_query)
+            x = cursor.fetchall()
+            my_dict = {}
+            for dep in x:
+                my_dict[dep[0]] = dep[1], dep[2], dep[3]
+                print(f"{dep[0]}.{dep[1]} {dep[2]}")
+            member_id = input('Dati un id:')
+            while member_id.isdigit() == False or int(member_id) not in list(my_dict.keys()):
+                member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+            initial_dep_id = my_dict[int(member_id)][2]
+
+
+            sql_query = ("select department_id, name from euroavia.departments ")
+            cursor.execute(sql_query)
+            x = cursor.fetchall()
+            my_dict = {}
+            for dep in x:
+                my_dict[dep[0]] = dep[1]
+                print(f"{dep[0]}.{dep[1]}")
+            dep_id = input('Dati un id:')
+            while dep_id.isdigit() == False or int(dep_id) not in list(my_dict.keys()) or dep_id == str(initial_dep_id):
+                dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+
+            sql_query = (f"update euroavia.members set department_id = {dep_id} where id ={member_id}")
+            try:
+                cursor.execute(sql_query)
+            except Exception as e:
+                print(f"Error on switching dep for member {e}")
+            else:
+                print("Ati schimbat departamentul membrului!")
+
+# def how_many_from_a_faculty():
+#     faculties = read_faculties()
+#     for key in faculties.keys():
+#         print(f"{key}.{faculties[key]}")
+
+
+
+
+
+
+
 
 
 
@@ -227,7 +352,11 @@ if __name__ == '__main__':
     # see_how_many_at_a_department()
     #see_events_for_member()
     # see_how_many_from_a_study_year()
-    delete_event_for_member()
+    # delete_event_for_member()
+    # add_event_for_member()
+    # delete_member()
+    # replace_member_to_another_dep()
+    how_many_from_a_faculty()
 
 
 
