@@ -1,7 +1,7 @@
 class Member:
     def __init__(self, last_name: str ,first_name: str,
                  telephone_number: str,study_year: str,
-                 college: str, middle_name: str, events: list = [] , department_id: int = None):
+                 college: int, middle_name: str, events: list = [] , department_id: int = None):
         self.last_name = last_name
         self.first_name = first_name
         self.middle_name = middle_name

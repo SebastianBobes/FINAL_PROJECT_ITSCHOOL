@@ -1,0 +1,24 @@
+#membru din lb sa faca insert, update, select
+#head poate sa faca select la orice dep
+#dar doar la dep lui poate sa faca insert, update
+
+
+#sa vezi cati s au inscris la un eveniment----
+#sa vezi cati oameni sunt la un anumit departament----
+#sa vezi la ce evenimente a participat un anumit membru----
+#sa dai un an de la 1 la 4 sa vezi cati membrii sunt de la anul citit de la tast---
+
+
+#sa stergi un eveniment la care un membru nu mai vine---
+#sa adaugi un eveniment la care un membru sa vina---
+
+
+#sa stergi un membru - doar supervizorul departamentului---
+#sa muti membrul de la un departament la altul---
+#cati studenti de la fiecare facultate---
+
+
+#functie pentru a afisa toti membrii
+#functie pt a afisa departamentele
+#functie pentru a afisa evenimentele
+#functie sa citeasca departamentele, evenimentele si id urile din db

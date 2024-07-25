@@ -464,21 +464,13 @@ class Ui_MainWindow(object):
         self.AN_DE_STUDIU_comboBox.setItemText(1, _translate("MainWindow", "II"))
         self.AN_DE_STUDIU_comboBox.setItemText(2, _translate("MainWindow", "III"))
         self.AN_DE_STUDIU_comboBox.setItemText(3, _translate("MainWindow", "IV"))
-        self.FACULTATE_comboBox.setItemText(0, _translate("MainWindow", "Facultatea de Inginerie Electrică"))
-        self.FACULTATE_comboBox.setItemText(1, _translate("MainWindow", "Facultatea de Energetică"))
-        self.FACULTATE_comboBox.setItemText(2, _translate("MainWindow", "Facultatea de Automatică și Calculatoare"))
-        self.FACULTATE_comboBox.setItemText(3, _translate("MainWindow", "Facultatea de Electronică, Telecomunicații și Tehnologia Informației"))
-        self.FACULTATE_comboBox.setItemText(4, _translate("MainWindow", "Facultatea de Inginerie Mecanică și Mecatronică"))
-        self.FACULTATE_comboBox.setItemText(5, _translate("MainWindow", "Facultatea de Inginerie Industrială și Robotică"))
-        self.FACULTATE_comboBox.setItemText(6, _translate("MainWindow", "Facultatea de Ingineria Sistemelor Biotehnice"))
-        self.FACULTATE_comboBox.setItemText(7, _translate("MainWindow", "Facultatea de Transporturi"))
-        self.FACULTATE_comboBox.setItemText(8, _translate("MainWindow", "Facultatea de Inginerie Aerospațială"))
-        self.FACULTATE_comboBox.setItemText(9, _translate("MainWindow", "Facultatea de Știința și Ingineria Materialelor"))
-        self.FACULTATE_comboBox.setItemText(10, _translate("MainWindow", "Facultatea de Inginerie Chimică și Biotehnologii"))
-        self.FACULTATE_comboBox.setItemText(11, _translate("MainWindow", "Facultatea de Inginerie în Limbi Străine"))
-        self.FACULTATE_comboBox.setItemText(12, _translate("MainWindow", "Facultatea de Științe Aplicate"))
-        self.FACULTATE_comboBox.setItemText(13, _translate("MainWindow", "Facultatea de Inginerie Medicală"))
-        self.FACULTATE_comboBox.setItemText(14, _translate("MainWindow", "Facultatea de Antreprenoriat, Ingineria și Managementul Afacerilor"))
+
+        faculties = euroavia_db.read_faculties()
+        for index in range(len(faculties.keys())) :
+            self.FACULTATE_comboBox.setItemText(index, _translate("MainWindow", faculties[str(index+1)]))
+
+
+
         self.DroWo_checkBox.setText(_translate("MainWindow", "Drone Workshop"))
         self.RoWo_checkBox.setText(_translate("MainWindow", "Rocket Workshop"))
         self.HSS_checkBox.setText(_translate("MainWindow", "Head Start Session"))
@@ -561,7 +553,11 @@ class Ui_MainWindow(object):
             return False
 
         study_year = self.AN_DE_STUDIU_comboBox.currentText()
-        college = self.FACULTATE_comboBox.currentText()
+
+        faculties = euroavia_db.read_faculties()
+        faculties_swap = {v: k for k, v in faculties.items()}
+
+        college = faculties_swap[self.FACULTATE_comboBox.currentText()]
         department = self.DEPARTAMENT_comboBox.currentText()
 
         with open("config.json", 'r') as f:
@@ -573,7 +569,7 @@ class Ui_MainWindow(object):
         if self.WiCa_checkBox.isChecked(): events.append(self.WiCa_checkBox.text())
         member = Member(last_name=last_name, first_name=first_name,
                         middle_name=middle_name, telephone_number=telephone_number,
-                        study_year=study_year, college=college,
+                        study_year=study_year, college=int(college),
                         department_id=department_id, events=events)
         if euroavia_db.unicity_checker(member.email, 'email_address') == True:
             messagebox.showerror("ERROR", f"{last_name} {first_name} {middle_name} exista!")

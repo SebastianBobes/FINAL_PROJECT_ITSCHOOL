@@ -4,31 +4,6 @@ from psycopg2._psycopg import cursor
 
 from Members import Member
 
-#membru din lb sa faca insert, update, select
-#head poate sa faca select la orice dep
-#dar doar la dep lui poate sa faca insert, update
-
-
-#sa vezi cati s au inscris la un eveniment----
-#sa vezi cati oameni sunt la un anumit departament----
-#sa vezi la ce evenimente a participat un anumit membru----
-#sa dai un an de la 1 la 4 sa vezi cati membrii sunt de la anul citit de la tast---
-
-
-#sa stergi un eveniment la care un membru nu mai vine---
-#sa adaugi un eveniment la care un membru sa vina---
-
-
-#sa stergi un membru - doar supervizorul departamentului---
-#sa muti membrul de la un departament la altul---
-#cati studenti de la fiecare facultate
-
-
-#functie pentru a afisa toti membrii
-#functie pt a afisa departamentele
-#functie pentru a afisa evenimentele
-#functie sa citeasca departamentele, evenimentele si id urile din db
-
 def read_config(path: str = 'config.json'):
     try:
         with open(path, 'r') as f:
@@ -330,11 +305,16 @@ def replace_member_to_another_dep():
             else:
                 print("Ati schimbat departamentul membrului!")
 
-# def how_many_from_a_faculty():
-#     faculties = read_faculties()
-#     for key in faculties.keys():
-#         print(f"{key}.{faculties[key]}")
 
+def how_many_from_a_faculty():
+    config = read_config()
+    faculties = read_faculties()
+    for key in faculties.keys():
+        with ps.connect(**config) as conn:
+            with conn.cursor() as cursor:
+                sql_query = (f"select count(id) from euroavia.members where college = {key} ")
+                cursor.execute(sql_query)
+                print(f"{faculties[key]} ---> {cursor.fetchone()[0]} membrii inscrisi!")
 
 
 
@@ -356,7 +336,7 @@ if __name__ == '__main__':
     # add_event_for_member()
     # delete_member()
     # replace_member_to_another_dep()
-    how_many_from_a_faculty()
+     how_many_from_a_faculty()
 
 
 
