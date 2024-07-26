@@ -22,12 +22,15 @@ def read_faculties(path: str = 'config.json'):
 
 
 
-def execute_query(sql_query: str, config: dict):
+def execute_query(sql_query: str, config: dict, show: bool = True):
     try:
         with ps.connect(**config) as conn:
             with conn.cursor() as cursor:
                 cursor.execute(sql_query)
-                return cursor
+                if show:
+                    return cursor.fetchall()
+                else:
+                    return cursor
     except Exception as e:
         print(f"Failure on reading from database. Error: {e}")
         return False
@@ -98,96 +101,99 @@ def unicity_checker(parameter: str, category: str) ->bool:
         return False
 
 
+def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = True) -> dict:
+    second_dict = {}
+    if len_of_item == 2:
+        for item in initial_dict:
+            second_dict[item[len_of_item-2]] = item[len_of_item-1]
+            if printed:
+                print(f"{item[len_of_item-2]}.{item[len_of_item-1]}")
+            else:
+                pass
+        return second_dict
+    elif len_of_item == 3:
+        for item in initial_dict:
+            second_dict[item[0]] = item[len_of_item-1], item[len_of_item-2]
+            if printed:
+                print(f"{item[len_of_item-3]}.{item[len_of_item-2]} {item[len_of_item-1]}")
+            else:
+                pass
+        return second_dict
 
 
 def see_how_many_at_a_event():
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            sql_query = ("select event_id, name from euroavia.events ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            my_dict = {}
-            for event in x:
-                my_dict[event[0]] = event[1]
-                print(f"{event[0]}.{event[1]}")
+    sql_query = ("select event_id, name from euroavia.events ")
+    x = execute_query(sql_query,config)
+    events_dict = show_dict_stylish(x)
+    event_id = input('Dati un id:')
+    while event_id.isdigit() == False or int(event_id) not in list(events_dict.keys()):
+        event_id = input(f'Numar invalid ! Reintroduceti id-ul:')
 
-            event_id = input('Dati un id:')
-            while event_id.isdigit() == False or int(event_id) not in list(my_dict.keys()):
-                event_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-            sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={int(event_id)}")
-            cursor.execute(sql_query)
-            number_of_members = cursor.fetchall()[0][0]
-            print(f"La {my_dict[int(event_id)]} s-au inscris {number_of_members} euroavieni!")
+    sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={int(event_id)}")
+
+    number_of_members = execute_query(sql_query,config)[0][0]
+    print(f"La {events_dict[int(event_id)]} s-au inscris {number_of_members} euroavieni!")
+
 
 def see_how_many_at_a_department():
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            sql_query = ("select department_id, name from euroavia.departments ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            my_dict = {}
-            for dep in x:
-                my_dict[dep[0]] = dep[1]
-                print(f"{dep[0]}.{dep[1]}")
+    sql_query = ("select department_id, name from euroavia.departments ")
+    x = execute_query(sql_query,config)
+    deps_dict = show_dict_stylish(x)
 
-            dep_id = input('Dati un id:')
-            while dep_id.isdigit() == False or int(dep_id) not in list(my_dict.keys()):
-                dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-            sql_query = (f"select count(department_id) from euroavia.members where department_id ={int(dep_id)}")
-            cursor.execute(sql_query)
-            number_of_members = cursor.fetchall()[0][0]
-            print(f"In departamentul {my_dict[int(dep_id)]} sunt {number_of_members} euroavieni!")
+    dep_id = input('Dati un id:')
+    while dep_id.isdigit() == False or int(dep_id) not in list(deps_dict.keys()):
+        dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+
+    sql_query = (f"select count(department_id) from euroavia.members where department_id ={int(dep_id)}")
+    number_of_members = execute_query(sql_query,config)[0][0]
+    print(f"In departamentul {deps_dict[int(dep_id)]} sunt {number_of_members} euroavieni!")
+
 
 def see_events_for_member(path = 'config.json'):
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            sql_query = ("select id, last_name, first_name from euroavia.members ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            my_dict = {}
-            for dep in x:
-                my_dict[dep[0]] = dep[1],dep[2]
-                print(f"{dep[0]}.{dep[1]} {dep[2]}")
-            member_id  = input('Dati un id:')
-            while member_id.isdigit() == False or int(member_id) not in list(my_dict.keys()):
-                member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-            sql_query = (f"select event_id from euroavia.events_members where member_id ={int(member_id)}")
-            cursor.execute(sql_query)
-            events = cursor.fetchall()
-            try:
-                with open(path, 'r') as f:
-                    event_ids = json.loads(f.read())['event_id']
-            except Exception as e:
-                print(f"Failed reading event_ids from file! {e}")
-            event_ids_swap = {v: k for k, v in event_ids.items()}
-            print(f"\n{my_dict[int(member_id)][0]} {my_dict[int(member_id)][1]} va participa la: " )
-            id_and_events = {}
-            event_list = []
-            for item in events:
-                    event_list.append(str(item[0]))
-                    print(f"\t\t\t{item[0]}.{event_ids_swap[item[0]]}")
-            id_and_events[member_id] = event_list
-            return id_and_events
+    sql_query = ("select id, last_name, first_name from euroavia.members ")
+    x = execute_query(sql_query,config)
+    members_dict = show_dict_stylish(x ,len_of_item=3)
+
+    member_id = input('Dati un id:')
+    while member_id.isdigit() == False or int(member_id) not in list(members_dict.keys()):
+        member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+
+    sql_query = (f"select event_id from euroavia.events_members where member_id ={int(member_id)}")
+    events = execute_query(sql_query,config)
+
+    sql_query = (f"select event_id, name from euroavia.events ")
+    y = execute_query(sql_query, config)
+    events_dict = show_dict_stylish(y, printed=False)
+
+    print(f"\n{members_dict[int(member_id)][0]} {members_dict[int(member_id)][1]} va participa la: ")
+    id_and_events = {}
+    event_list = []
+    for item in events:
+        event_list.append(str(item[0]))
+        print(f"\t\t\t{item[0]}.{events_dict[item[0]]}")
+    id_and_events[member_id] = event_list
+    return id_and_events
+
 
 def see_how_many_from_a_study_year(path: str = "config.json"):
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            with open(path, 'r') as f:
-                study_years = json.loads(f.read())['study_years']
-            study_year = input("Introduceti un an de la 1 la 4: ")
-            while study_year.isdigit() == False or study_year not in study_years.keys():
-                study_year = input("An inexistent! Introduceti un an de la 1 la 4: ")
+    with open(path, 'r') as f:
+        study_years = json.loads(f.read())['study_years']
+    study_year = input("Introduceti un an de la 1 la 4: ")
+    while study_year.isdigit() == False or study_year not in study_years.keys():
+        study_year = input("An inexistent! Introduceti un an de la 1 la 4: ")
 
-            sql_query = (f"select id, last_name, first_name from euroavia.members where study_year = '{study_years[study_year]}' ")
-            cursor.execute(sql_query)
-            members = cursor.fetchall()
-            print(f"\nStudentii care sunt in anul {study_years[study_year]}:  ")
-            for member in members:
-                print(f"\t{member[0]}. {member[1]} {member[2]}")
+    sql_query = (
+        f"select id, last_name, first_name from euroavia.members where study_year = '{study_years[study_year]}' ")
+    members = execute_query(sql_query, config)
+    print(f"\nStudentii care sunt in anul {study_years[study_year]}:  ")
+    for member in members:
+        print(f"\t{member[0]}. {member[1]} {member[2]}")
+
+
 
 def delete_event_for_member():
     id_and_events = see_events_for_member()
@@ -200,121 +206,101 @@ def delete_event_for_member():
 
     try:
         config = read_config()
-        with ps.connect(**config) as conn:
-            with conn.cursor() as cursor:
-                sql_query = (f"delete from euroavia.events_members where (event_id = {id_to_del} and member_id={member_id})")
-                cursor.execute(sql_query)
+        sql_query = (f"delete from euroavia.events_members where (event_id = {id_to_del} and member_id={member_id})")
+        execute_query(sql_query,config, show=False)
     except Exception as e:
         print(f"Eroare! Stergerea nu a fost realizata ! {e}")
     else:
         print("Stergerea a fost realizata cu succes!")
 
-def add_event_for_member(path:str = 'config.json'):
+def add_event_for_member():
+
     id_and_events = see_events_for_member()
     events = list(id_and_events.values())[0]
     member_id = list(id_and_events.keys())[0]
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            sql_query = ("select event_id, name from euroavia.events ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            list_of_available_ids = []
-            for event_id in events:
-                for item in x:
-                    if event_id == str(item[0]):
-                        x.remove(item)
+    sql_query = ("select event_id, name from euroavia.events ")
+    x = execute_query(sql_query, config)
+    for event_id in events:
+        [x.remove(item) for item in x if event_id == str(item[0])]
 
-            my_dict = {}
-            print("Evenimentele la care membrul nu participa sunt: ")
-            for dep in x:
-                my_dict[dep[0]] = dep[1]
-                print(f"\t\t\t{dep[0]}.{dep[1]}")
-                list_of_available_ids.append(str(dep[0]))
-            if len(list_of_available_ids) == 0:
-                print("Membrul participa la toate evenimentele!")
-                exit()
-            user_pick = input("Dati id-ul evenimentului la care va participa membrul: ")
-            while user_pick not in list_of_available_ids:
-                user_pick = input("Id invalid! Dati id-ul: ")
+    print("Evenimentele la care membrul nu participa sunt: ")
+    my_dict = show_dict_stylish(x)
+    list_of_available_ids = list(my_dict.keys())
+    list_of_available_ids = [str(item) for item in list_of_available_ids]
+    if len(list_of_available_ids) == 0:
+        print("Membrul participa deja la toate evenimentele!")
+        exit()
+    user_pick = input("Dati id-ul evenimentului la care va participa membrul: ")
+    while user_pick not in list_of_available_ids:
+        user_pick = input("Id invalid! Dati id-ul: ")
 
-            sql_query = (f"insert into euroavia.events_members (event_id,member_id) values({int(user_pick)}, {member_id}) ")
-            try:
-                cursor.execute(sql_query)
-            except Exception as e:
-                print("Failed on addid event for member! ")
-            else:
-                print("Eveniment adaugat!")
+    sql_query = (f"insert into euroavia.events_members (event_id,member_id) values({int(user_pick)}, {member_id}) ")
+    try:
+        execute_query(sql_query, config, False)
+    except Exception as e:
+        print(f"Failed on adding event for member! {e} ")
+    else:
+        print("Eveniment adaugat!")
+
+
 
 def delete_member():
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            sql_query = ("select id, last_name, first_name from euroavia.members ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            my_dict = {}
-            for dep in x:
-                my_dict[dep[0]] = dep[1], dep[2]
-                print(f"{dep[0]}.{dep[1]} {dep[2]}")
-            member_id = input('Dati un id:')
-            while member_id.isdigit() == False or int(member_id) not in list(my_dict.keys()):
-                member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+    sql_query = ("select id, last_name, first_name from euroavia.members ")
+    x =execute_query(sql_query, config)
+    member_dict = show_dict_stylish(x)
+    member_id = input('Dati un id:')
+    while member_id.isdigit() == False or int(member_id) not in list(member_dict.keys()):
+        member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
 
-            sql_query = (f"delete from euroavia.members where id = {member_id}")
-            try:
-                cursor.execute(sql_query)
-            except Exception as e:
-                print(f"Error on deleting member! {e}")
-            else:
-                print("Membrul a fost sters!")
+    sql_query = (f"delete from euroavia.members where id = {member_id}")
+    try:
+        execute_query(sql_query, config, False)
+    except Exception as e:
+        print(f"Error on deleting member! {e}")
+    else:
+        print("Membrul a fost sters!")
+
 
 def replace_member_to_another_dep():
     config = read_config()
-    with ps.connect(**config) as conn:
-        with conn.cursor() as cursor:
-            sql_query = ("select id, last_name, first_name, department_id from euroavia.members ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            my_dict = {}
-            for dep in x:
-                my_dict[dep[0]] = dep[1], dep[2], dep[3]
-                print(f"{dep[0]}.{dep[1]} {dep[2]}")
-            member_id = input('Dati un id:')
-            while member_id.isdigit() == False or int(member_id) not in list(my_dict.keys()):
-                member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-            initial_dep_id = my_dict[int(member_id)][2]
+    sql_query = ("select id, last_name, first_name from euroavia.members ")
+    x = execute_query(sql_query, config)
+    member_dict = show_dict_stylish(x,3)
 
+    sql_query = ("select id, department_id from euroavia.members ")
+    y = execute_query(sql_query, config)
+    dep_dict = show_dict_stylish(y, printed = False)
 
-            sql_query = ("select department_id, name from euroavia.departments ")
-            cursor.execute(sql_query)
-            x = cursor.fetchall()
-            my_dict = {}
-            for dep in x:
-                my_dict[dep[0]] = dep[1]
-                print(f"{dep[0]}.{dep[1]}")
-            dep_id = input('Dati un id:')
-            while dep_id.isdigit() == False or int(dep_id) not in list(my_dict.keys()) or dep_id == str(initial_dep_id):
-                dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+    member_id = input('Dati un id:')
+    while member_id.isdigit() == False or int(member_id) not in list(member_dict.keys()):
+        member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+    initial_dep_id = dep_dict[int(member_id)]
 
-            sql_query = (f"update euroavia.members set department_id = {dep_id} where id ={member_id}")
-            try:
-                cursor.execute(sql_query)
-            except Exception as e:
-                print(f"Error on switching dep for member {e}")
-            else:
-                print("Ati schimbat departamentul membrului!")
+    sql_query = ("select department_id, name from euroavia.departments ")
+    x = execute_query(sql_query,config)
+    event_dict = show_dict_stylish(x)
+    dep_id = input('Dati un id:')
+    while dep_id.isdigit() == False or int(dep_id) not in list(event_dict.keys()) or dep_id == str(initial_dep_id):
+        dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+
+    sql_query = (f"update euroavia.members set department_id = {dep_id} where id ={member_id}")
+    try:
+        execute_query(sql_query,config, False)
+    except Exception as e:
+        print(f"Error on switching dep for member {e}")
+    else:
+        print("Ati schimbat departamentul membrului!")
 
 
 def how_many_from_a_faculty():
     config = read_config()
     faculties = read_faculties()
     for key in faculties.keys():
-        with ps.connect(**config) as conn:
-            with conn.cursor() as cursor:
-                sql_query = (f"select count(id) from euroavia.members where college = {key} ")
-                cursor.execute(sql_query)
-                print(f"{faculties[key]} ---> {cursor.fetchone()[0]} membrii inscrisi!")
+        sql_query = (f"select count(id) from euroavia.members where college = {key} ")
+        x = execute_query(sql_query,config)
+        print(f"{faculties[key]} ---> {x[0][0]} membrii inscrisi!")
 
 
 
@@ -336,7 +322,12 @@ if __name__ == '__main__':
     # add_event_for_member()
     # delete_member()
     # replace_member_to_another_dep()
-     how_many_from_a_faculty()
+     #how_many_from_a_faculty()
+    # see_how_many_at_a_department()
+    # see_events_for_member()
+    # delete_event_for_member()
+
+    how_many_from_a_faculty()
 
 
 
