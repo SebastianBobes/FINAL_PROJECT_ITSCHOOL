@@ -103,6 +103,12 @@ def unicity_checker(parameter: str, category: str) ->bool:
 
 def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = True) -> dict:
     second_dict = {}
+    if len_of_item == 1:
+        second_list = []
+        for item in initial_dict:
+            second_list.append(item[0])
+        return second_list
+
     if len_of_item == 2:
         for item in initial_dict:
             second_dict[item[len_of_item-2]] = item[len_of_item-1]
