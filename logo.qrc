@@ -1,9 +1,11 @@
 <RCC>
   <qresource prefix="newPrefix">
+    <file>../../Desktop/coding-illustration-2048x1365-yefj2c5b.png</file>
     <file>../../Desktop/Cartoon_space_rocket.png</file>
     <file>1643641029799.png</file>
     <file>EUROAVIA_Logo.png</file>
     <file>plane-semi-flat-b2d996.webp</file>
+    <file>../../Desktop/pngtree-woman-making-decision-between-two-options-png-image_6336529.png</file>
     <file>images-removebg-preview.png</file>
   </qresource>
 </RCC>

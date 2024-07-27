@@ -101,7 +101,7 @@ def unicity_checker(parameter: str, category: str) ->bool:
         return False
 
 
-def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = True) -> dict:
+def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = True) -> dict | list:
     second_dict = {}
     if len_of_item == 1:
         second_list = []
