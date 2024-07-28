@@ -10,13 +10,14 @@ from tkinter import messagebox
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
+from PyQt6.QtWidgets import QMainWindow
 
 import euroavia_db
 from Members import Member
 
 
 
-class Ui_FormWindow(object):
+class Ui_FormWindow(QMainWindow):
     def setupUi(self, FormWindow):
         FormWindow.setObjectName("FormWindow")
         FormWindow.resize(800, 600)

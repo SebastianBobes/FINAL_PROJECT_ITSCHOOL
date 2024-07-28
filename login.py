@@ -8,42 +8,50 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
+from PyQt6.QtWidgets import QMainWindow
 
 
-class Ui_LoginWindow(object):
+class Ui_LoginWindow(QMainWindow):
     def setupUi(self, LoginWindow):
         LoginWindow.setObjectName("LoginWindow")
-        LoginWindow.resize(671, 555)
-        LoginWindow.setMinimumSize(QtCore.QSize(671, 555))
-        LoginWindow.setMaximumSize(QtCore.QSize(671, 555))
-        app.setWindowIcon(QtGui.QIcon("images/rocket.png"))
+        LoginWindow.resize(800, 600)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(LoginWindow.sizePolicy().hasHeightForWidth())
+        LoginWindow.setSizePolicy(sizePolicy)
+        LoginWindow.setMinimumSize(QtCore.QSize(800, 600))
+        LoginWindow.setMaximumSize(QtCore.QSize(800, 600))
         self.centralwidget = QtWidgets.QWidget(parent=LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.login_label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.login_label.setGeometry(QtCore.QRect(170, 50, 361, 141))
+        self.login_label.setGeometry(QtCore.QRect(250, 60, 361, 141))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         self.login_label.setFont(font)
         self.login_label.setObjectName("login_label")
         self.background_label = QtWidgets.QLabel(parent=self.centralwidget)
         self.background_label.setGeometry(QtCore.QRect(0, -40, 821, 681))
-        self.background_label.setMinimumSize(QtCore.QSize(821, 681))
-        self.background_label.setMaximumSize(QtCore.QSize(821, 681))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.background_label.sizePolicy().hasHeightForWidth())
+        self.background_label.setSizePolicy(sizePolicy)
         self.background_label.setObjectName("background_label")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(90, 170, 161, 41))
+        self.label.setGeometry(QtCore.QRect(160, 160, 161, 41))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(80, 300, 141, 31))
+        self.label_2.setGeometry(QtCore.QRect(150, 290, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         self.label_2.setFont(font)
         self.label_2.setObjectName("label_2")
         self.lineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(200, 210, 301, 41))
+        self.lineEdit.setGeometry(QtCore.QRect(270, 230, 301, 41))
         self.lineEdit.setStyleSheet("QLineEdit {\n"
 "    border: 2px solid #8f8f91; /* Border color */\n"
 "    border-radius: 15px;       /* Corner roundness */\n"
@@ -52,7 +60,7 @@ class Ui_LoginWindow(object):
 "}")
         self.lineEdit.setObjectName("lineEdit")
         self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(200, 430, 301, 51))
+        self.pushButton.setGeometry(QtCore.QRect(270, 490, 301, 51))
         self.pushButton.setStyleSheet("QPushButton {\n"
 "    font-size: 14pt; /* Increase the font size as desired */\n"
 "    font-family: \'Bahnschrift\'; /* Optional: Set the font family to Bahnschrift */\n"
@@ -71,7 +79,7 @@ class Ui_LoginWindow(object):
 "}")
         self.pushButton.setObjectName("pushButton")
         self.lineEdit_2 = QtWidgets.QLineEdit(parent=self.centralwidget)
-        self.lineEdit_2.setGeometry(QtCore.QRect(200, 330, 301, 41))
+        self.lineEdit_2.setGeometry(QtCore.QRect(270, 350, 301, 41))
         self.lineEdit_2.setStyleSheet("QLineEdit {\n"
 "    border: 2px solid #8f8f91; /* Border color */\n"
 "    border-radius: 15px;       /* Corner roundness */\n"
@@ -80,19 +88,19 @@ class Ui_LoginWindow(object):
 "}")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_3.setGeometry(QtCore.QRect(10, -20, 191, 221))
+        self.label_3.setGeometry(QtCore.QRect(-20, -40, 271, 271))
         self.label_3.setText("")
         self.label_3.setPixmap(QtGui.QPixmap(":/newPrefix/EUROAVIA_Logo.png"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_4.setGeometry(QtCore.QRect(530, 50, 71, 91))
+        self.label_4.setGeometry(QtCore.QRect(620, 50, 111, 141))
         self.label_4.setText("")
         self.label_4.setPixmap(QtGui.QPixmap(":/newPrefix/images-removebg-preview.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.back_pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.back_pushButton.setGeometry(QtCore.QRect(20, 490, 101, 51))
+        self.back_pushButton.setGeometry(QtCore.QRect(20, 490, 111, 51))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         font.setPointSize(16)
@@ -148,10 +156,11 @@ class Ui_LoginWindow(object):
 
 
 if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    LoginWindow = QtWidgets.QMainWindow()
-    ui = Ui_LoginWindow()
-    ui.setupUi(LoginWindow)
-    LoginWindow.show()
-    sys.exit(app.exec())
+    # import sys
+    # app = QtWidgets.QApplication(sys.argv)
+    # LoginWindow = QtWidgets.QMainWindow()
+    # ui = Ui_LoginWindow()
+    # ui.setupUi(LoginWindow)
+    # LoginWindow.show()
+    # sys.exit(app.exec())
+    pass

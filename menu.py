@@ -8,15 +8,13 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
+from PyQt6.QtWidgets import QMainWindow
 
 
-class Ui_MenuWindow(object):
+class Ui_MenuWindow(QMainWindow):
     def setupUi(self, MenuWindow):
         MenuWindow.setObjectName("MenuWindow")
-        MenuWindow.resize(771, 600)
-        app.setWindowIcon(QtGui.QIcon("images/rocket.png"))
-        MenuWindow.setMinimumSize(QtCore.QSize(771, 600))
-        MenuWindow.setMaximumSize(QtCore.QSize(771, 600))
+        MenuWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(parent=MenuWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.menu_label = QtWidgets.QLabel(parent=self.centralwidget)
@@ -101,11 +99,17 @@ class Ui_MenuWindow(object):
         self.euroavia_logo_label.setScaledContents(True)
         self.euroavia_logo_label.setObjectName("euroavia_logo_label")
         self.plane_label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.plane_label.setGeometry(QtCore.QRect(510, 30, 221, 171))
+        self.plane_label.setGeometry(QtCore.QRect(570, 30, 221, 171))
         self.plane_label.setText("")
-        self.plane_label.setPixmap(QtGui.QPixmap(":/newPrefix/Desktop/image-removebg-preview.png"))
+        self.plane_label.setPixmap(QtGui.QPixmap(":/newPrefix/image-removebg-preview.png"))
         self.plane_label.setScaledContents(True)
         self.plane_label.setObjectName("plane_label")
+        self.label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(40, 40, 191, 161))
+        self.label.setText("")
+        self.label.setPixmap(QtGui.QPixmap(":/newPrefix/69-699228_our-team-team-icon-white-transparent-clipart.png"))
+        self.label.setScaledContents(True)
+        self.label.setObjectName("label")
         self.background_label.raise_()
         self.menu_label.raise_()
         self.woman_choosing_label.raise_()
@@ -113,6 +117,7 @@ class Ui_MenuWindow(object):
         self.euroavia_logo_label.raise_()
         self.pushButton.raise_()
         self.plane_label.raise_()
+        self.label.raise_()
         MenuWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MenuWindow)
@@ -120,7 +125,7 @@ class Ui_MenuWindow(object):
 
     def retranslateUi(self, MenuWindow):
         _translate = QtCore.QCoreApplication.translate
-        MenuWindow.setWindowTitle(_translate("MenuWindow", "MenuWindow"))
+        MenuWindow.setWindowTitle(_translate("MenuWindow", "MainWindow"))
         self.menu_label.setText(_translate("MenuWindow", "<html><head/><body><p><span style=\" font-size:48pt; font-weight:700; color:#ffffff;\">MENU</span></p></body></html>"))
         self.background_label.setText(_translate("MenuWindow", "<html><head/><body><p><img src=\":/newPrefix/EUROAVIA_Logo.png\"/></p></body></html>"))
         self.pushButton.setText(_translate("MenuWindow", "Application Form"))
@@ -135,6 +140,8 @@ class Ui_MenuWindow(object):
         self.euroavia_logo_label.setPixmap(qpixmap)
         qpixmap = QPixmap("images/image-removebg-preview.png")
         self.plane_label.setPixmap(qpixmap)
+        qpixmap = QPixmap("images/69-699228_our-team-team-icon-white-transparent-clipart.png")
+        self.label.setPixmap(qpixmap)
 
 
 if __name__ == "__main__":
