@@ -210,6 +210,43 @@ QPushButton:pressed {
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="back_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>490</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border-radius: 15px; /* Valoarea aceasta o poți ajusta pentru a obține rotunjimea dorită */
+    border: 2px solid #ADD8E6; /* Bordura butonului */
+    background-color:#ADD8E6; /* Culoarea de fundal a butonului */
+    color: white; /* Culoarea textului */
+    padding: 5px; /* Spațierea internă */
+}
+QPushButton:hover {
+    background-color: #87CEEB; /* Culoarea de fundal când mouse-ul este deasupra butonului */
+}
+
+QPushButton:pressed {
+    background-color: #5FA9D0; /* Culoarea de fundal când butonul este apăsat */
+    border: 2px solid #5FA9D0; /* Bordura butonului când este apăsat */
+}</string>
+    </property>
+    <property name="text">
+     <string>MENU</string>
+    </property>
+   </widget>
    <zorder>background_label</zorder>
    <zorder>login_label</zorder>
    <zorder>label_2</zorder>
@@ -219,6 +256,7 @@ QPushButton:pressed {
    <zorder>pushButton</zorder>
    <zorder>label_4</zorder>
    <zorder>label</zorder>
+   <zorder>back_pushButton</zorder>
   </widget>
  </widget>
  <resources>

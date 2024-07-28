@@ -1,7 +1,9 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-from application_form import Ui_MainWindow
+from application_form import Ui_FormWindow
+from menu import Ui_MenuWindow
+from login import LoginWindow
 
 
 
@@ -10,12 +12,14 @@ from application_form import Ui_MainWindow
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    app.setWindowIcon(QtGui.QIcon("rocket.png"))
+    app.setWindowIcon(QtGui.QIcon("images/rocket.png"))
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_FormWindow()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec())
+
+
 
 
 

@@ -685,8 +685,8 @@ QComboBox::down-arrow {
    <widget class="QLabel" name="label_9_LOGO">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>350</y>
+      <x>550</x>
+      <y>390</y>
       <width>251</width>
       <height>251</height>
      </rect>
@@ -707,7 +707,7 @@ QComboBox::down-arrow {
       <x>-20</x>
       <y>-10</y>
       <width>831</width>
-      <height>591</height>
+      <height>621</height>
      </rect>
     </property>
     <property name="text">
@@ -781,8 +781,8 @@ QComboBox::down-arrow {
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>460</y>
+      <x>350</x>
+      <y>490</y>
       <width>161</width>
       <height>71</height>
      </rect>
@@ -815,6 +815,43 @@ QPushButton:pressed {
      <string>INSCRIE-TE!</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="back_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>530</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border-radius: 15px; /* Valoarea aceasta o poți ajusta pentru a obține rotunjimea dorită */
+    border: 2px solid #ADD8E6; /* Bordura butonului */
+    background-color:#ADD8E6; /* Culoarea de fundal a butonului */
+    color: white; /* Culoarea textului */
+    padding: 5px; /* Spațierea internă */
+}
+QPushButton:hover {
+    background-color: #87CEEB; /* Culoarea de fundal când mouse-ul este deasupra butonului */
+}
+
+QPushButton:pressed {
+    background-color: #5FA9D0; /* Culoarea de fundal când butonul este apăsat */
+    border: 2px solid #5FA9D0; /* Bordura butonului când este apăsat */
+}</string>
+    </property>
+    <property name="text">
+     <string>MENU</string>
+    </property>
+   </widget>
    <zorder>label_BACKGROUND</zorder>
    <zorder>label_9_LOGO</zorder>
    <zorder>label</zorder>
@@ -842,18 +879,8 @@ QPushButton:pressed {
    <zorder>label_11</zorder>
    <zorder>label_12</zorder>
    <zorder>pushButton</zorder>
+   <zorder>back_pushButton</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="logo.qrc"/>

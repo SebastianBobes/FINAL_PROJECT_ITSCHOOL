@@ -16,7 +16,7 @@ class Ui_LoginWindow(object):
         LoginWindow.resize(671, 555)
         LoginWindow.setMinimumSize(QtCore.QSize(671, 555))
         LoginWindow.setMaximumSize(QtCore.QSize(671, 555))
-        app.setWindowIcon(QtGui.QIcon("rocket.png"))
+        app.setWindowIcon(QtGui.QIcon("images/rocket.png"))
         self.centralwidget = QtWidgets.QWidget(parent=LoginWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.login_label = QtWidgets.QLabel(parent=self.centralwidget)
@@ -64,7 +64,7 @@ class Ui_LoginWindow(object):
 "    border-radius: 5px; /* Round the corners */\n"
 "}\n"
 "QPushButton:hover {\n"
-"    background-color: #ECF0F1; /* Darker gray on hover */\n"
+"    background-color: #A9A9A9; /* Darker gray on hover */\n"
 "}\n"
 "QPushButton:pressed {\n"
 "    background-color: #808080; /* Even darker gray on press */\n"
@@ -79,7 +79,6 @@ class Ui_LoginWindow(object):
 "    background-color: #ffffff; /* Background color */\n"
 "}")
         self.lineEdit_2.setObjectName("lineEdit_2")
-        self.lineEdit_2.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_3.setGeometry(QtCore.QRect(10, -20, 191, 221))
         self.label_3.setText("")
@@ -92,6 +91,29 @@ class Ui_LoginWindow(object):
         self.label_4.setPixmap(QtGui.QPixmap(":/newPrefix/images-removebg-preview.png"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
+        self.back_pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.back_pushButton.setGeometry(QtCore.QRect(20, 490, 101, 51))
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        font.setBold(True)
+        self.back_pushButton.setFont(font)
+        self.back_pushButton.setStyleSheet("QPushButton {\n"
+"    border-radius: 15px; /* Valoarea aceasta o poți ajusta pentru a obține rotunjimea dorită */\n"
+"    border: 2px solid #ADD8E6; /* Bordura butonului */\n"
+"    background-color:#ADD8E6; /* Culoarea de fundal a butonului */\n"
+"    color: white; /* Culoarea textului */\n"
+"    padding: 5px; /* Spațierea internă */\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #87CEEB; /* Culoarea de fundal când mouse-ul este deasupra butonului */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #5FA9D0; /* Culoarea de fundal când butonul este apăsat */\n"
+"    border: 2px solid #5FA9D0; /* Bordura butonului când este apăsat */\n"
+"}")
+        self.back_pushButton.setObjectName("back_pushButton")
         self.background_label.raise_()
         self.login_label.raise_()
         self.label_2.raise_()
@@ -101,6 +123,7 @@ class Ui_LoginWindow(object):
         self.pushButton.raise_()
         self.label_4.raise_()
         self.label.raise_()
+        self.back_pushButton.raise_()
         LoginWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LoginWindow)
@@ -108,17 +131,19 @@ class Ui_LoginWindow(object):
 
     def retranslateUi(self, LoginWindow):
         _translate = QtCore.QCoreApplication.translate
-        LoginWindow.setWindowTitle(_translate("LoginWindow", "LoginWindow"))
+        LoginWindow.setWindowTitle(_translate("LoginWindow", "MainWindow"))
         self.login_label.setText(_translate("LoginWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:48pt; font-weight:700; color:#ffffff;\">Login</span></p><p align=\"center\"><br/></p></body></html>"))
         self.background_label.setText(_translate("LoginWindow", "<html><head/><body><p><img src=\":/newPrefix/EUROAVIA_Logo.png\"/></p></body></html>"))
         self.label.setText(_translate("LoginWindow", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:700; color:#ffffff;\">USERNAME:</span></p></body></html>"))
         self.label_2.setText(_translate("LoginWindow", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:700; color:#ffffff;\">PASSWORD:</span></p><p><br/></p></body></html>"))
         self.pushButton.setText(_translate("LoginWindow", "Login"))
-        qpixmap = QPixmap("EUROAVIA_Logo.png")
+        self.back_pushButton.setText(_translate("LoginWindow", "MENU"))
+
+        qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.background_label.setPixmap(qpixmap)
-        qpixmap = QPixmap("images-removebg-preview.png")
+        qpixmap = QPixmap("images/images-removebg-preview.png")
         self.label_4.setPixmap(qpixmap)
-        qpixmap = QPixmap("EUROAVIA_Logo.png")
+        qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.label_3.setPixmap(qpixmap)
 
 
