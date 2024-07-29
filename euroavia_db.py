@@ -140,6 +140,7 @@ def see_how_many_at_a_event():
 
     number_of_members = execute_query(sql_query,config)[0][0]
     print(f"La {events_dict[int(event_id)]} s-au inscris {number_of_members} euroavieni!")
+#head
 
 
 def see_how_many_at_a_department():
@@ -155,6 +156,7 @@ def see_how_many_at_a_department():
     sql_query = (f"select count(department_id) from euroavia.members where department_id ={int(dep_id)}")
     number_of_members = execute_query(sql_query,config)[0][0]
     print(f"In departamentul {deps_dict[int(dep_id)]} sunt {number_of_members} euroavieni!")
+#head
 
 
 def see_events_for_member():
@@ -182,6 +184,7 @@ def see_events_for_member():
         print(f"\t\t\t{item[0]}.{events_dict[item[0]]}")
     id_and_events[member_id] = event_list
     return id_and_events
+#head,just the members from that dep +lb(el poate la oricine)
 
 
 def see_how_many_from_a_study_year(path: str = "config.json"):
@@ -198,6 +201,7 @@ def see_how_many_from_a_study_year(path: str = "config.json"):
     print(f"\nStudentii care sunt in anul {study_years[study_year]}:  ")
     for member in members:
         print(f"\t{member[0]}. {member[1]} {member[2]}")
+#head+lb
 
 
 
@@ -218,6 +222,7 @@ def delete_event_for_member():
         print(f"Eroare! Stergerea nu a fost realizata ! {e}")
     else:
         print("Stergerea a fost realizata cu succes!")
+#toti din lb
 
 def add_event_for_member():
 
@@ -248,6 +253,7 @@ def add_event_for_member():
         print(f"Failed on adding event for member! {e} ")
     else:
         print("Eveniment adaugat!")
+#toti din lb
 
 
 
@@ -267,6 +273,7 @@ def delete_member():
         print(f"Error on deleting member! {e}")
     else:
         print("Membrul a fost sters!")
+# doar presedintele sau vicele
 
 
 def replace_member_to_another_dep():
@@ -298,6 +305,7 @@ def replace_member_to_another_dep():
         print(f"Error on switching dep for member {e}")
     else:
         print("Ati schimbat departamentul membrului!")
+#supervizorul dep
 
 
 def how_many_from_a_faculty():
@@ -307,6 +315,7 @@ def how_many_from_a_faculty():
         sql_query = (f"select count(id) from euroavia.members where college = {key} ")
         x = execute_query(sql_query,config)
         print(f"{faculties[key]} ---> {x[0][0]} membrii inscrisi!")
+#toata lumea
 
 
 

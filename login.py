@@ -10,7 +10,8 @@ from tkinter import messagebox
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtWidgets import QMainWindow, QLineEdit
-import authentication
+
+
 
 class Ui_LoginWindow(QMainWindow):
     def setupUi(self, LoginWindow):
@@ -155,44 +156,7 @@ class Ui_LoginWindow(QMainWindow):
         self.label_4.setPixmap(qpixmap)
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.label_3.setPixmap(qpixmap)
-        self.pushButton.clicked.connect(self.login)
-
-    def login(self):
-        user = self.lineEdit.text()
-        password = self.lineEdit_2.text()
-        credentials  = authentication.write_and_read_credentials()
-        users_list = []
-        for item in credentials.values():
-            for my_dict in item:
-                users_list.append(my_dict['user'])
-        if user not in users_list:
-            messagebox.showerror("ERROR", "USER INEXISTENT!")
-            self.lineEdit.clear()
-            return False
-        else:
-            for item in credentials.values():
-                for my_dict in item:
-                    if user == my_dict['user']:
-                        if password == my_dict['password']:
-                            messagebox.showinfo("", "Te-ai logat cu succes!")
-                            self.lineEdit.clear()
-                            self.lineEdit_2.clear()
-
-                            return True
-                        else:
-                            messagebox.showerror("ERROR", "PAROLA INVALIDA!")
-                            self.lineEdit_2.clear()
-                            return False
 
 
 
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    LoginWindow = QtWidgets.QMainWindow()
-    ui = Ui_LoginWindow()
-    ui.setupUi(LoginWindow)
-    LoginWindow.show()
-    sys.exit(app.exec())
-    pass
