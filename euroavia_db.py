@@ -157,7 +157,7 @@ def see_how_many_at_a_department():
     print(f"In departamentul {deps_dict[int(dep_id)]} sunt {number_of_members} euroavieni!")
 
 
-def see_events_for_member(path = 'config.json'):
+def see_events_for_member():
     config = read_config()
     sql_query = ("select id, last_name, first_name from euroavia.members ")
     x = execute_query(sql_query,config)
