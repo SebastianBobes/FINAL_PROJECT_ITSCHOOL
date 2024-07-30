@@ -1,7 +1,7 @@
 import json
 import psycopg2 as ps
 from psycopg2._psycopg import cursor
-
+import excel_writer
 from Members import Member
 
 def read_config(path: str = 'config.json'):
@@ -138,40 +138,54 @@ def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = 
         return second_dict
 
 
-def see_how_many_at_a_event(event: str):
+def see_how_many_at_a_event(event, excel: bool = False):
     config = read_config()
-    sql_query = ("select event_id, name from euroavia.events ")
-    x = execute_query(sql_query,config)
-    events_dict = show_dict_stylish(x)
-    event_id = input('Dati un id:')
-    while event_id.isdigit() == False or int(event_id) not in list(events_dict.keys()):
-        event_id = input(f'Numar invalid ! Reintroduceti id-ul:')
+    data =[]
+    if excel:
+        sql_query = ("select event_id, name from euroavia.events ")
+        x = execute_query(sql_query, config)
+        events_dict = show_dict_stylish(x, printed=False)
+        for event_id in events_dict.keys():
+            sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={event_id}")
+            number_of_members = execute_query(sql_query, config)[0][0]
+            data.append([events_dict[event_id],number_of_members])
+        return data
+    else:
+        sql_query = ("select name, event_id from euroavia.events ")
+        x = execute_query(sql_query, config)
+        events_dict = show_dict_stylish(x, printed=False)
+        sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={int(events_dict[event])}")
+        number_of_members = execute_query(sql_query, config)[0][0]
+        return number_of_members
 
-    sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={int(event_id)}")
-
-    number_of_members = execute_query(sql_query,config)[0][0]
-    print(f"La {events_dict[int(event_id)]} s-au inscris {number_of_members} euroavieni!")
-#head
 
 
-def see_how_many_at_a_department():
+
+
+def see_how_many_at_a_department(dep,excel: bool = False):
     config = read_config()
-    sql_query = ("select department_id, name from euroavia.departments ")
-    x = execute_query(sql_query,config)
-    deps_dict = show_dict_stylish(x)
+    data = []
+    if excel:
+        sql_query = ("select department_id, name from euroavia.departments ")
+        x = execute_query(sql_query, config)
+        deps_dict = show_dict_stylish(x, printed=False)
+        for dep_id in (deps_dict.keys()):
+            sql_query = (f"select count(id) from euroavia.members where department_id ={dep_id}")
+            number_of_members = execute_query(sql_query, config)[0][0]
+            data.append([deps_dict[dep_id], number_of_members])
+        return data
+    else:
+        sql_query = ("select name, department_id from euroavia.departments ")
+        x = execute_query(sql_query, config)
+        deps_dict = show_dict_stylish(x, printed=False)
+        sql_query = (f"select count(id) from euroavia.members where department_id ={int(deps_dict[dep])}")
+        number_of_members = execute_query(sql_query, config)[0][0]
+        return number_of_members
 
-    dep_id = input('Dati un id:')
-    while dep_id.isdigit() == False or int(dep_id) not in list(deps_dict.keys()):
-        dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-
-    sql_query = (f"select count(department_id) from euroavia.members where department_id ={int(dep_id)}")
-    number_of_members = execute_query(sql_query,config)[0][0]
-    print(f"In departamentul {deps_dict[int(dep_id)]} sunt {number_of_members} euroavieni!")
-#head
 
 
 
-def see_events_for_member():
+def see_events_for_member(member):
     config = read_config()
     sql_query = ("select id, last_name, first_name from euroavia.members ")
     x = execute_query(sql_query,config)
@@ -353,7 +367,7 @@ if __name__ == '__main__':
     # see_how_many_at_a_department()
     # see_events_for_member()
     # delete_event_for_member()
-    print(read_sduty_years_from_config())
+    see_how_many_at_a_event()
 
 
 
