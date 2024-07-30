@@ -15,6 +15,7 @@ import authentication
 
 
 class Ui_HeadsWindow(QMainWindow):
+
     def setupUi(self, HeadsWindow):
         HeadsWindow.setObjectName("HeadsWindow")
         HeadsWindow.resize(800, 600)
@@ -432,6 +433,10 @@ class Ui_HeadsWindow(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.comboBox_3.setObjectName("comboBox_3")
+        members = euroavia_db.read_parameter_from_db('members', 'id', 'last_name')
+        for index in members.keys():
+                self.comboBox_3.addItem("")
+
         self.comboBox_2 = QtWidgets.QComboBox(parent=self.centralwidget)
         self.comboBox_2.setGeometry(QtCore.QRect(570, 240, 101, 31))
         self.comboBox_2.setStyleSheet("QComboBox {\n"
@@ -480,7 +485,7 @@ class Ui_HeadsWindow(QMainWindow):
 "}")
         self.comboBox_1.setObjectName("comboBox_1")
         events = euroavia_db.read_parameter_from_db('events','event_id', 'name')
-        for item in events.keys():
+        for index in events.keys():
                 self.comboBox_1.addItem("")
         self.change_password_button = QtWidgets.QPushButton(parent=self.centralwidget)
         self.change_password_button.setGeometry(QtCore.QRect(20, 530, 131, 61))
@@ -541,12 +546,20 @@ class Ui_HeadsWindow(QMainWindow):
 
         self.retranslateUi(HeadsWindow)
         QtCore.QMetaObject.connectSlotsByName(HeadsWindow)
+    def set_user(self, user,HeadsWindow):
+            self.user= user
+            _translate = QtCore.QCoreApplication.translate
+            HeadsWindow.setWindowTitle(_translate("HeadsWindow", "MainWindow"))
+
+
+
 
     def retranslateUi(self, HeadsWindow):
         _translate = QtCore.QCoreApplication.translate
         HeadsWindow.setWindowTitle(_translate("HeadsWindow", "MainWindow"))
         self.background_label.setText(_translate("HeadsWindow", "<html><head/><body><p><img src=\":/newPrefix/EUROAVIA_Logo.png\"/></p></body></html>"))
-        self.head_of_label.setText(_translate("HeadsWindow", "<html><head/><body><p><span style=\" font-size:16pt; color:#00ff00;\">YOU\'VE LOGGED IN AS:</span></p><p><span style=\" font-size:16pt; color:#ff474c;\">HEAD OF</span></p></body></html>"))
+        self.head_of_label.setText(_translate("HeadsWindow",
+                                              f"<html><head/><body><p><span style=\" font-size:16pt; color:#00ff00;\">YOU\'VE LOGGED IN AS:</span></p><p><span style=\" font-size:16pt; color:#ff474c;\">MEMBER OF HEADS </span></p></body></html>"))
         self.label_4.setText(_translate("HeadsWindow", "<html><head/><body><p><span style=\" font-size:14pt; color:#ffffff;\">?</span></p></body></html>"))
         self.label_7.setText(_translate("HeadsWindow", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">1.Cati membrii vor participa la</span></p></body></html>"))
         self.label_8.setText(_translate("HeadsWindow", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">2.Cati membrii s-au inscris in departamentul</span></p></body></html>"))
@@ -572,6 +585,12 @@ class Ui_HeadsWindow(QMainWindow):
         study_years = euroavia_db.read_sduty_years_from_config()
         for index in study_years:
                 self.comboBox_4.setItemText(int(index) - 1, _translate("HeadsWindow", study_years[index]))
+
+
+        members = euroavia_db.read_parameter_from_db('members', 'id', 'last_name')
+        x = list(members.keys())
+        for index, value in enumerate(x):
+                self.comboBox_3.setItemText(index, _translate("HeadsWindow", f"{value}.{members[value]}"))
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.background_label.setPixmap(qpixmap)
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
@@ -579,6 +598,8 @@ class Ui_HeadsWindow(QMainWindow):
         qpixmap = QPixmap("images/istockphoto-645085176-612x612-removebg-preview.png")
         self.thinking_man_label.setPixmap(qpixmap)
         self.exit_button.clicked.connect(exit)
+
+
 
 
 if __name__ == "__main__":

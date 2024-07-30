@@ -138,7 +138,7 @@ def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = 
         return second_dict
 
 
-def see_how_many_at_a_event():
+def see_how_many_at_a_event(event: str):
     config = read_config()
     sql_query = ("select event_id, name from euroavia.events ")
     x = execute_query(sql_query,config)
