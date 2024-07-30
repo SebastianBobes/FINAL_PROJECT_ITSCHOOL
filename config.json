@@ -28,22 +28,5 @@
     "3": "III",
     "4": "IV"
 
-  },
-        "faculties" :{
-          "1": "Facultatea de Inginerie Electrica",
-          "2": "Facultatea de Energetica" ,
-          "3": "Facultatea de Automatica si Calculatoare",
-          "4": "Facultatea de Electronica, Telecomunicatii si Tehnologia Informatiei",
-          "5": "Facultatea de Inginerie Mecanica si Mecatronica",
-          "6": "Facultatea de Inginerie Industriala si Robotica",
-          "7": "Facultatea de Ingineria Sistemelor Biotehnice" ,
-          "8": "Facultatea de Transporturi",
-          "9": "Facultatea de Inginerie Aerospatiala",
-          "10": "Facultatea de Stiinta si Ingineria Materialelor",
-          "11": "Facultatea de Inginerie Chimica si Biotehnologii",
-          "12": "Facultatea de Inginerie in Limbi Straine",
-          "13": "Facultatea de Stiinte Aplicate" ,
-          "14": "Facultatea de Inginerie Medicala" ,
-          "15": "Facultatea de Antreprenoriat, Ingineria si Managementul Afacerilor"
   }
 }

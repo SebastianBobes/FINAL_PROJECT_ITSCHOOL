@@ -62,6 +62,19 @@ def write_and_read_credentials(path: str = "auth.json"):
 
     return auth_dict
 
+def read_function_from_file(user,path: str = 'auth.json'):
+    with open(path, 'r') as f:
+        credentials = json.loads(f.read())
+        for item in credentials.keys():
+            for my_dict in credentials[item]:
+                if user == my_dict['user']:
+                    if item == 'heads':
+                        return my_dict['dep_head_of:']
+                    elif item == 'local_board':
+                        return my_dict['position']
+
+
+
 
 
 

@@ -7,6 +7,8 @@ from application_form import Ui_FormWindow
 from menu import Ui_MenuWindow
 from login import Ui_LoginWindow
 from heads_window import Ui_HeadsWindow
+from local_board_window_1 import Ui_LocalBoard1Window
+from local_board_window_2 import Ui_LocalBoard2Window
 import sys
 
 def start_login_window():
@@ -20,9 +22,17 @@ def start_menu_window():
 def show_heads_window():
     widget.setCurrentWidget(ui_heads_window)
 
+def show_local_board1_window():
+    widget.setCurrentWidget(ui_local_board_window_1)
+
+def show_local_board2_window():
+    widget.setCurrentWidget(ui_local_board_window_2)
+
+
 
 
 def login():
+    _translate = QtCore.QCoreApplication.translate
     user = ui_login_window.lineEdit.text()
     password = ui_login_window.lineEdit_2.text()
     credentials = authentication.write_and_read_credentials()
@@ -35,23 +45,22 @@ def login():
         ui_login_window.lineEdit.clear()
         return False
     else:
-        for item in credentials.values():
-            for my_dict in item:
+        for item in credentials.keys():
+            for my_dict in credentials[item]:
                 if user == my_dict['user']:
                     if password == my_dict['password']:
-                        show_heads_window()
+                        if item == 'heads':
+                            show_heads_window()
+                            return authentication.read_function_from_file(user)
+                        elif item == 'local_board':
+                            show_local_board1_window()
+                            return authentication.read_function_from_file(user)
+                        else:
+                            pass
                     else:
                         messagebox.showerror("ERROR", "PAROLA INVALIDA!")
                         ui_login_window.lineEdit_2.clear()
                         return False
-
-
-
-
-
-
-
-
 
 
 
@@ -85,16 +94,24 @@ if __name__ == "__main__":
     ui_heads_window.setupUi(ui_heads_window)
     widget.addWidget(ui_heads_window)
 
+    ui_local_board_window_1 = Ui_LocalBoard1Window()
+    ui_local_board_window_1.setupUi(ui_local_board_window_1)
+    widget.addWidget(ui_local_board_window_1)
+    ui_local_board_window_1.next_page_button.clicked.connect(show_local_board2_window)
+
+    ui_local_board_window_2 = Ui_LocalBoard2Window()
+    ui_local_board_window_2.setupUi(ui_local_board_window_2)
+    widget.addWidget(ui_local_board_window_2)
+    ui_local_board_window_2.previous_page_button.clicked.connect(show_local_board1_window)
+
     widget.setCurrentWidget(ui_menu_window)
     widget.show()
 
 
 
-
-
-
-
     sys.exit(app.exec())
+
+
 
 
 

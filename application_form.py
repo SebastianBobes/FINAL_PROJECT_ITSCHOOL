@@ -181,21 +181,9 @@ class Ui_FormWindow(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.FACULTATE_comboBox.setObjectName("FACULTATE_comboBox")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
-        self.FACULTATE_comboBox.addItem("")
+        faculties = euroavia_db.read_parameter_from_db('faculties', 'id', 'name')
+        for item in faculties.keys():
+            self.FACULTATE_comboBox.addItem("")
         self.DroWo_checkBox = QtWidgets.QCheckBox(parent=self.centralwidget)
         self.DroWo_checkBox.setGeometry(QtCore.QRect(390, 340, 191, 20))
         self.DroWo_checkBox.setStyleSheet("QCheckBox {\n"
@@ -485,9 +473,9 @@ class Ui_FormWindow(QMainWindow):
         self.AN_DE_STUDIU_comboBox.setItemText(2, _translate("FormWindow", "III"))
         self.AN_DE_STUDIU_comboBox.setItemText(3, _translate("FormWindow", "IV"))
 
-        faculties = euroavia_db.read_faculties()
-        for index in range(len(faculties.keys())):
-            self.FACULTATE_comboBox.setItemText(index, _translate("FormWindow", faculties[str(index + 1)]))
+        faculties = euroavia_db.read_parameter_from_db('faculties','id', 'name')
+        for index in faculties.keys():
+            self.FACULTATE_comboBox.setItemText(index-1, _translate("FormWindow", faculties[index]))
 
         self.DroWo_checkBox.setText(_translate("FormWindow", "Drone Workshop"))
         self.RoWo_checkBox.setText(_translate("FormWindow", "Rocket Workshop"))

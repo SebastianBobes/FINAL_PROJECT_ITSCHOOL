@@ -12,6 +12,11 @@ def read_config(path: str = 'config.json'):
     except Exception as e:
         print(f"Error on reading config file! {e}")
 
+def read_sduty_years_from_config(path: str= 'config.json'):
+    with open(path, 'r') as f:
+        study_years = json.loads(f.read())['study_years']
+    return study_years
+
 def read_faculties(path: str = 'config.json'):
     try:
         with open(path, 'r') as f:
@@ -34,6 +39,12 @@ def execute_query(sql_query: str, config: dict, show: bool = True):
     except Exception as e:
         print(f"Failure on reading from database. Error: {e}")
         return False
+
+def read_parameter_from_db(table_name: str,id_name: str = 'event_id', name: str= 'name'):
+    config  = read_config()
+    sql_qury = (f"select {id_name},{name} from euroavia.{table_name}")
+    x = execute_query(sql_query=sql_qury, config=config, show=True)
+    return  show_dict_stylish(x, printed=False)
 
 
 
@@ -159,6 +170,7 @@ def see_how_many_at_a_department():
 #head
 
 
+
 def see_events_for_member():
     config = read_config()
     sql_query = ("select id, last_name, first_name from euroavia.members ")
@@ -189,8 +201,7 @@ def see_events_for_member():
 
 def see_how_many_from_a_study_year(path: str = "config.json"):
     config = read_config()
-    with open(path, 'r') as f:
-        study_years = json.loads(f.read())['study_years']
+    study_years = read_sduty_years_from_config
     study_year = input("Introduceti un an de la 1 la 4: ")
     while study_year.isdigit() == False or study_year not in study_years.keys():
         study_year = input("An inexistent! Introduceti un an de la 1 la 4: ")
@@ -329,6 +340,7 @@ def how_many_from_a_faculty():
 
 
 if __name__ == '__main__':
+    pass
     # see_how_many_at_a_event()
     # see_how_many_at_a_department()
     #see_events_for_member()
@@ -341,8 +353,7 @@ if __name__ == '__main__':
     # see_how_many_at_a_department()
     # see_events_for_member()
     # delete_event_for_member()
-
-    how_many_from_a_faculty()
+    print(read_sduty_years_from_config())
 
 
 
