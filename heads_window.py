@@ -602,6 +602,9 @@ class Ui_HeadsWindow(QMainWindow):
         self.red_1.clicked.connect(self.see_members_for_an_event_excel)
         self.green_2.clicked.connect(self.see_members_from_a_dep)
         self.red_2.clicked.connect(self.see_members_from_a_dep_excel)
+        self.green_3.clicked.connect(self.see_event_for_members)
+        self.green_4.clicked.connect(self.see_how_many_from_a_study_year)
+        self.red_4.clicked.connect(self.see_how_many_from_a_study_year_excel)
     def see_members_for_an_event(self):
         event= self.comboBox_1.currentText()
         members = euroavia_db.see_how_many_at_a_event(event)
@@ -621,6 +624,38 @@ class Ui_HeadsWindow(QMainWindow):
         data = euroavia_db.see_how_many_at_a_department(dep, excel=True)
         excel_writer.create_excel('membrii_dep', data, 'departament', 'number_of_members')
         QMessageBox.information(self, "Info", f"Excelul a fost creat!")
+
+    def see_event_for_members(self):
+        str=''
+        for index in self.comboBox_3.currentText():
+                if index!='.':
+                        str = str +index
+                else:
+                        break
+        list = euroavia_db.see_events_for_member(str)
+        if len(list) ==0:
+                QMessageBox.information(self, "Info", f"Membrul nu participa la niciun eveniment!")
+                return False
+        str= ''
+        for index in list:
+                str = str+'\n'+index
+        QMessageBox.information(self, "Info", f"Membrul participa la: {str}")
+
+    def see_how_many_from_a_study_year(self):
+        study_year = self.comboBox_4.currentText()
+        x = euroavia_db.see_how_many_from_a_study_year(study_year)
+        QMessageBox.information(self, "Info", f"{x}")
+    def see_how_many_from_a_study_year_excel(self):
+        study_year = self.comboBox_4.currentText()
+        data = euroavia_db.see_how_many_from_a_study_year(study_year, excel=True)
+        excel_writer.create_excel('members.study.year', data, 'AN', 'members')
+        QMessageBox.information(self, "Info", f"Excelul s-a creat!")
+
+
+
+
+
+
 
 
 

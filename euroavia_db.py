@@ -185,15 +185,8 @@ def see_how_many_at_a_department(dep,excel: bool = False):
 
 
 
-def see_events_for_member(member):
+def see_events_for_member(member_id):
     config = read_config()
-    sql_query = ("select id, last_name, first_name from euroavia.members ")
-    x = execute_query(sql_query,config)
-    members_dict = show_dict_stylish(x ,len_of_item=3)
-
-    member_id = input('Dati un id:')
-    while member_id.isdigit() == False or int(member_id) not in list(members_dict.keys()):
-        member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
 
     sql_query = (f"select event_id from euroavia.events_members where member_id ={int(member_id)}")
     events = execute_query(sql_query,config)
@@ -201,32 +194,33 @@ def see_events_for_member(member):
     sql_query = (f"select event_id, name from euroavia.events ")
     y = execute_query(sql_query, config)
     events_dict = show_dict_stylish(y, printed=False)
-
-    print(f"\n{members_dict[int(member_id)][0]} {members_dict[int(member_id)][1]} va participa la: ")
-    id_and_events = {}
-    event_list = []
+    my_list = []
+    # id_and_events = {}
+    # event_list = []
     for item in events:
-        event_list.append(str(item[0]))
-        print(f"\t\t\t{item[0]}.{events_dict[item[0]]}")
-    id_and_events[member_id] = event_list
-    return id_and_events
-#head,just the members from that dep +lb(el poate la oricine)
+        # event_list.append(str(item[0]))
+        my_list.append(f"{item[0]}.{events_dict[item[0]]}")
+    # id_and_events[member_id] = event_list
+    return my_list
 
 
-def see_how_many_from_a_study_year(path: str = "config.json"):
+
+def see_how_many_from_a_study_year(study_year: str, excel: bool = False):
     config = read_config()
-    study_years = read_sduty_years_from_config
-    study_year = input("Introduceti un an de la 1 la 4: ")
-    while study_year.isdigit() == False or study_year not in study_years.keys():
-        study_year = input("An inexistent! Introduceti un an de la 1 la 4: ")
+    if excel:
+        sql_query = (f"select id, last_name, first_name from euroavia.members where study_year = '{study_year}' ")
+        members = execute_query(sql_query, config, show=True)
+        list = []
+        for member in members:
+            list.append([f"{study_year}, {member[1]}"])
+        return list
+    else:
+        sql_query = (f"select count(id) from euroavia.members where study_year = '{study_year}' ")
+        members = execute_query(sql_query, config, show=True)
+        return members[0][0]
 
-    sql_query = (
-        f"select id, last_name, first_name from euroavia.members where study_year = '{study_years[study_year]}' ")
-    members = execute_query(sql_query, config)
-    print(f"\nStudentii care sunt in anul {study_years[study_year]}:  ")
-    for member in members:
-        print(f"\t{member[0]}. {member[1]} {member[2]}")
-#head+lb
+
+
 
 
 
@@ -367,7 +361,9 @@ if __name__ == '__main__':
     # see_how_many_at_a_department()
     # see_events_for_member()
     # delete_event_for_member()
-    see_how_many_at_a_event()
+    # see_how_many_at_a_event()
+    # see_events_for_member('18')
+    see_how_many_from_a_study_year('I',True)
 
 
 
