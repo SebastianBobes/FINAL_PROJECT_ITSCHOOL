@@ -35,12 +35,12 @@ class Ui_MenuWindow(QMainWindow):
         self.pushButton.setStyleSheet("QPushButton {\n"
 "    background-color: #4DBB63; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
-"    color: black; /* Text color */\n"
+"    color: white; /* Text color */\n"
 "    width: 100px; /* Width of the button */\n"
 "    height: 100px; /* Height of the button */\n"
 "    border-radius: 50px; /* Rounded corners, half of width/height */\n"
 "    text-align: center; /* Center text */\n"
-"    font-size: 12px; /* Font size */\n"
+"    font-size: 15px; /* Font size */\n"
 "    font-weight: bold; /* Bold text */\n"
 "    transition: all 0.2s ease; /* Smooth transition for all properties */\n"
 "}\n"
@@ -70,12 +70,12 @@ class Ui_MenuWindow(QMainWindow):
         self.pushButton_2.setStyleSheet("QPushButton {\n"
 "    background-color: #FF474C; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
-"    color: black; /* Text color */\n"
+"    color: white; /* Text color */\n"
 "    width: 100px; /* Width of the button */\n"
 "    height: 100px; /* Height of the button */\n"
 "    border-radius: 50px; /* Rounded corners, half of width/height */\n"
 "    text-align: center; /* Center text */\n"
-"    font-size: 12px; /* Font size */\n"
+"    font-size: 15px; /* Font size */\n"
 "    font-weight: bold; /* Bold text */\n"
 "    transition: all 0.2s ease; /* Smooth transition for all properties */\n"
 "}\n"
@@ -105,11 +105,17 @@ class Ui_MenuWindow(QMainWindow):
         self.plane_label.setScaledContents(True)
         self.plane_label.setObjectName("plane_label")
         self.label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(40, 40, 191, 161))
+        self.label.setGeometry(QtCore.QRect(40, 40, 191, 171))
         self.label.setText("")
         self.label.setPixmap(QtGui.QPixmap(":/newPrefix/69-699228_our-team-team-icon-white-transparent-clipart.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
+        self.laptop_label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.laptop_label.setGeometry(QtCore.QRect(570, 380, 211, 191))
+        self.laptop_label.setText("")
+        self.laptop_label.setPixmap(QtGui.QPixmap(":/newPrefix/laptop.png"))
+        self.laptop_label.setScaledContents(True)
+        self.laptop_label.setObjectName("laptop_label")
         self.background_label.raise_()
         self.menu_label.raise_()
         self.woman_choosing_label.raise_()
@@ -118,6 +124,7 @@ class Ui_MenuWindow(QMainWindow):
         self.pushButton.raise_()
         self.plane_label.raise_()
         self.label.raise_()
+        self.laptop_label.raise_()
         MenuWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MenuWindow)
@@ -126,11 +133,11 @@ class Ui_MenuWindow(QMainWindow):
     def retranslateUi(self, MenuWindow):
         _translate = QtCore.QCoreApplication.translate
         MenuWindow.setWindowTitle(_translate("MenuWindow", "MainWindow"))
-        self.menu_label.setText(_translate("MenuWindow", "<html><head/><body><p><span style=\" font-size:48pt; font-weight:700; color:#ffffff;\">MENU</span></p></body></html>"))
+        self.menu_label.setText(_translate("MenuWindow", "<html><head/><body><p><span style=\" font-size:48pt; font-weight:700; color:#e8e8e8;\">MENU</span></p></body></html>"))
         self.background_label.setText(_translate("MenuWindow", "<html><head/><body><p><img src=\":/newPrefix/EUROAVIA_Logo.png\"/></p></body></html>"))
-        self.pushButton.setText(_translate("MenuWindow", "Application Form"))
+        self.pushButton.setText(_translate("MenuWindow", "FORM"))
         self.woman_choosing_label.setText(_translate("MenuWindow", "<html><head/><body><p><img src=\":/newPrefix/pngtree-woman-making-decision-between-two-options-png-image_6336529.png\"/></p></body></html>"))
-        self.pushButton_2.setText(_translate("MenuWindow", "Login"))
+        self.pushButton_2.setText(_translate("MenuWindow", "LOGIN"))
 
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.background_label.setPixmap(qpixmap)
@@ -142,6 +149,8 @@ class Ui_MenuWindow(QMainWindow):
         self.plane_label.setPixmap(qpixmap)
         qpixmap = QPixmap("images/69-699228_our-team-team-icon-white-transparent-clipart.png")
         self.label.setPixmap(qpixmap)
+        qpixmap = QPixmap("images/laptop.png")
+        self.laptop_label.setPixmap(qpixmap)
 
 
 if __name__ == "__main__":

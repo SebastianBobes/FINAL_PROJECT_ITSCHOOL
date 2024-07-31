@@ -29,7 +29,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt; font-weight:700; color:#ffffff;&quot;&gt;MENU&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:48pt; font-weight:700; color:#e8e8e8;&quot;&gt;MENU&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="background_label">
@@ -205,7 +205,7 @@ QPushButton:pressed {
       <x>40</x>
       <y>40</y>
       <width>191</width>
-      <height>161</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="text">
@@ -213,6 +213,25 @@ QPushButton:pressed {
     </property>
     <property name="pixmap">
      <pixmap resource="../images/logo.qrc">:/newPrefix/69-699228_our-team-team-icon-white-transparent-clipart.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="laptop_label">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>380</y>
+      <width>211</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../images/logo.qrc">:/newPrefix/laptop.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -226,11 +245,11 @@ QPushButton:pressed {
    <zorder>pushButton</zorder>
    <zorder>plane_label</zorder>
    <zorder>label</zorder>
+   <zorder>laptop_label</zorder>
   </widget>
  </widget>
  <resources>
   <include location="../images/logo.qrc"/>
-  <include location="logo.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -31,11 +31,17 @@ def execute_query(sql_query: str, config: dict, show: bool = True):
         print(f"Failure on reading from database. Error: {e}")
         return False
 
-def read_parameter_from_db(table_name: str,id_name: str = 'event_id', name: str= 'name'):
+def read_parameter_from_db(table_name: str,id_name: str = 'event_id', name: str= 'name', name_2:str=''):
     config  = read_config()
-    sql_qury = (f"select {id_name},{name} from euroavia.{table_name}")
-    x = execute_query(sql_query=sql_qury, config=config, show=True)
-    return  show_dict_stylish(x, printed=False)
+    if name_2 == '':
+        sql_qury = (f"select {id_name},{name} from euroavia.{table_name}")
+        x = execute_query(sql_query=sql_qury, config=config, show=True)
+        return show_dict_stylish(x, printed=False)
+    else:
+        sql_qury = (f"select {id_name},{name}, {name_2} from euroavia.{table_name}")
+        x = execute_query(sql_query=sql_qury, config=config, show=True)
+        return show_dict_stylish(x, len_of_item = 3, printed=False)
+
 
 
 
@@ -65,7 +71,7 @@ def read_last_id() -> int:
                 list_of_members.append(dict(zip(columns, item)))
             return list_of_members[-1]['id']
 
-def add_events_for_member(member:Member, events:list,  path: str = "config.json") -> bool:
+def add_events_for_member(events:list,  path: str = "config.json") -> bool:
     config = read_config()
     try:
         with ps.connect(**config) as conn:
@@ -129,7 +135,7 @@ def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = 
         return second_dict
 
 
-def see_how_many_at_a_event(event, excel: bool = False):
+def see_how_many_at_a_event(event_id: int, excel: bool = False):
     config = read_config()
     data =[]
     if excel:
@@ -142,10 +148,7 @@ def see_how_many_at_a_event(event, excel: bool = False):
             data.append([events_dict[event_id],number_of_members])
         return data
     else:
-        sql_query = ("select name, event_id from euroavia.events ")
-        x = execute_query(sql_query, config)
-        events_dict = show_dict_stylish(x, printed=False)
-        sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={int(events_dict[event])}")
+        sql_query = (f"select count(member_id) from euroavia.events_members where event_id ={event_id}")
         number_of_members = execute_query(sql_query, config)[0][0]
         return number_of_members
 
@@ -153,7 +156,7 @@ def see_how_many_at_a_event(event, excel: bool = False):
 
 
 
-def see_how_many_at_a_department(dep,excel: bool = False):
+def see_how_many_at_a_department(dep_id,excel: bool = False):
     config = read_config()
     data = []
     if excel:
@@ -166,10 +169,7 @@ def see_how_many_at_a_department(dep,excel: bool = False):
             data.append([deps_dict[dep_id], number_of_members])
         return data
     else:
-        sql_query = ("select name, department_id from euroavia.departments ")
-        x = execute_query(sql_query, config)
-        deps_dict = show_dict_stylish(x, printed=False)
-        sql_query = (f"select count(id) from euroavia.members where department_id ={int(deps_dict[dep])}")
+        sql_query = (f"select count(id) from euroavia.members where department_id ={dep_id}")
         number_of_members = execute_query(sql_query, config)[0][0]
         return number_of_members
 

@@ -87,10 +87,13 @@ if __name__ == "__main__":
     ui_heads_window.change_password_button.clicked.connect(show_change_pass_window)
     ui_local_board_window_1.change_password_button.clicked.connect(show_change_pass_window)
     ui_change_pass.back_pushButton.clicked.connect(start_menu_window)
+    ui_heads_window.back_pushButton.clicked.connect(start_menu_window)
     widget.setCurrentWidget(ui_menu_window)
     widget.show()
 
     sys.exit(app.exec())
+
+
 
 
 
