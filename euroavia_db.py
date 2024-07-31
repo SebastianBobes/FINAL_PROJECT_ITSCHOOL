@@ -17,15 +17,6 @@ def read_sduty_years_from_config(path: str= 'config.json'):
         study_years = json.loads(f.read())['study_years']
     return study_years
 
-def read_faculties(path: str = 'config.json'):
-    try:
-        with open(path, 'r') as f:
-            faculties = json.loads(f.read())['faculties']
-            return faculties
-    except Exception as e:
-        print(f"Error on reading from current file! {e}")
-
-
 
 def execute_query(sql_query: str, config: dict, show: bool = True):
     try:
@@ -185,7 +176,7 @@ def see_how_many_at_a_department(dep,excel: bool = False):
 
 
 
-def see_events_for_member(member_id):
+def see_events_for_member(member_id: int,delete: bool =False):
     config = read_config()
 
     sql_query = (f"select event_id from euroavia.events_members where member_id ={int(member_id)}")
@@ -194,14 +185,21 @@ def see_events_for_member(member_id):
     sql_query = (f"select event_id, name from euroavia.events ")
     y = execute_query(sql_query, config)
     events_dict = show_dict_stylish(y, printed=False)
-    my_list = []
-    # id_and_events = {}
-    # event_list = []
-    for item in events:
-        # event_list.append(str(item[0]))
-        my_list.append(f"{item[0]}.{events_dict[item[0]]}")
-    # id_and_events[member_id] = event_list
-    return my_list
+    if delete ==  False:
+        my_list = []
+        for item in events:
+            my_list.append(f"{item[0]}.{events_dict[item[0]]}")
+        return my_list
+    else:
+        my_list =[]
+        id_and_events = {}
+        event_list = []
+        for item in events:
+            event_list.append(int(item[0]))
+            my_list.append(f"{item[0]}.{events_dict[item[0]]}")
+        id_and_events[member_id] = event_list
+        return id_and_events
+
 
 
 
@@ -212,7 +210,7 @@ def see_how_many_from_a_study_year(study_year: str, excel: bool = False):
         members = execute_query(sql_query, config, show=True)
         list = []
         for member in members:
-            list.append([f"{study_year}, {member[1]}"])
+            list.append([study_year,member[1],member[2]])
         return list
     else:
         sql_query = (f"select count(id) from euroavia.members where study_year = '{study_year}' ")
@@ -224,67 +222,42 @@ def see_how_many_from_a_study_year(study_year: str, excel: bool = False):
 
 
 
-def delete_event_for_member():
-    id_and_events = see_events_for_member()
-    member_id = list(id_and_events.keys())[0]
-    events = list(id_and_events.values())[0]
-
-    id_to_del =input("Dati id-ul evenimentului la care membrul nu va mai participa: ")
-    while id_to_del not in events:
-        id_to_del = input("Id invalid! Dati id-ul: ")
-
+def delete_event_for_member(member_id: int,event_id : int):
+    events = see_events_for_member(member_id,True)[member_id]
+    if event_id not in events:
+        return False
     try:
         config = read_config()
-        sql_query = (f"delete from euroavia.events_members where (event_id = {id_to_del} and member_id={member_id})")
+        sql_query = (f"delete from euroavia.events_members where (event_id = {event_id} and member_id={member_id})")
         execute_query(sql_query,config, show=False)
     except Exception as e:
         print(f"Eroare! Stergerea nu a fost realizata ! {e}")
     else:
         print("Stergerea a fost realizata cu succes!")
-#toti din lb
+        return True
 
-def add_event_for_member():
 
-    id_and_events = see_events_for_member()
-    events = list(id_and_events.values())[0]
-    member_id = list(id_and_events.keys())[0]
+def add_event_for_member(member_id: int, event_id: int):
     config = read_config()
-    sql_query = ("select event_id, name from euroavia.events ")
-    x = execute_query(sql_query, config)
-    for event_id in events:
-        [x.remove(item) for item in x if event_id == str(item[0])]
+    id_and_events = see_events_for_member(member_id)
+    events = see_events_for_member(member_id,True)[member_id]
 
-    print("Evenimentele la care membrul nu participa sunt: ")
-    my_dict = show_dict_stylish(x)
-    list_of_available_ids = list(my_dict.keys())
-    list_of_available_ids = [str(item) for item in list_of_available_ids]
-    if len(list_of_available_ids) == 0:
-        print("Membrul participa deja la toate evenimentele!")
-        exit()
-    user_pick = input("Dati id-ul evenimentului la care va participa membrul: ")
-    while user_pick not in list_of_available_ids:
-        user_pick = input("Id invalid! Dati id-ul: ")
-
-    sql_query = (f"insert into euroavia.events_members (event_id,member_id) values({int(user_pick)}, {member_id}) ")
-    try:
-        execute_query(sql_query, config, False)
-    except Exception as e:
-        print(f"Failed on adding event for member! {e} ")
+    if event_id in events:
+        return False
     else:
-        print("Eveniment adaugat!")
-#toti din lb
+        sql_query = (f"insert into euroavia.events_members (event_id,member_id) values({event_id}, {member_id}) ")
+        try:
+            execute_query(sql_query, config, False)
+        except Exception as e:
+            print(f"Failed on adding event for member! {e} ")
+        else:
+            print("Eveniment adaugat!")
 
 
 
-def delete_member():
+
+def delete_member(member_id: int):
     config = read_config()
-    sql_query = ("select id, last_name, first_name from euroavia.members ")
-    x =execute_query(sql_query, config)
-    member_dict = show_dict_stylish(x)
-    member_id = input('Dati un id:')
-    while member_id.isdigit() == False or int(member_id) not in list(member_dict.keys()):
-        member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-
     sql_query = (f"delete from euroavia.members where id = {member_id}")
     try:
         execute_query(sql_query, config, False)
@@ -292,49 +265,45 @@ def delete_member():
         print(f"Error on deleting member! {e}")
     else:
         print("Membrul a fost sters!")
-# doar presedintele sau vicele
 
 
-def replace_member_to_another_dep():
+
+def replace_member_to_another_dep(member_id: int, dep_id: int):
+
     config = read_config()
-    sql_query = ("select id, last_name, first_name from euroavia.members ")
+    sql_query = (f"select department_id from euroavia.members where id={member_id} ")
     x = execute_query(sql_query, config)
-    member_dict = show_dict_stylish(x,3)
-
-    sql_query = ("select id, department_id from euroavia.members ")
-    y = execute_query(sql_query, config)
-    dep_dict = show_dict_stylish(y, printed = False)
-
-    member_id = input('Dati un id:')
-    while member_id.isdigit() == False or int(member_id) not in list(member_dict.keys()):
-        member_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-    initial_dep_id = dep_dict[int(member_id)]
-
-    sql_query = ("select department_id, name from euroavia.departments ")
-    x = execute_query(sql_query,config)
-    event_dict = show_dict_stylish(x)
-    dep_id = input('Dati un id:')
-    while dep_id.isdigit() == False or int(dep_id) not in list(event_dict.keys()) or dep_id == str(initial_dep_id):
-        dep_id = input(f'Numar invalid ! Reintroduceti id-ul:')
-
-    sql_query = (f"update euroavia.members set department_id = {dep_id} where id ={member_id}")
-    try:
-        execute_query(sql_query,config, False)
-    except Exception as e:
-        print(f"Error on switching dep for member {e}")
+    if dep_id ==x[0][0]:
+        return False
     else:
-        print("Ati schimbat departamentul membrului!")
-#supervizorul dep
+        sql_query = (f"update euroavia.members set department_id = {dep_id} where id ={member_id}")
+        try:
+            execute_query(sql_query,config, False)
+        except Exception as e:
+            print(f"Error on switching dep for member {e}")
+        else:
+            print("Ati schimbat departamentul membrului!")
+            return True
 
 
-def how_many_from_a_faculty():
+
+def how_many_from_a_faculty(id: int, excel: bool = False):
     config = read_config()
-    faculties = read_faculties()
-    for key in faculties.keys():
+    faculties = read_parameter_from_db('faculties', 'id', 'name')
+    if excel == False:
+        for key in faculties.keys():
+            if id  == key:
+                break
         sql_query = (f"select count(id) from euroavia.members where college = {key} ")
-        x = execute_query(sql_query,config)
-        print(f"{faculties[key]} ---> {x[0][0]} membrii inscrisi!")
-#toata lumea
+        x = execute_query(sql_query, config)
+        return x[0][0]
+    else:
+        my_list =[]
+        for key in faculties.keys():
+            sql_query = (f"select count(id) from euroavia.members where college = {key} ")
+            x = execute_query(sql_query,config)
+            my_list.append([faculties[key],x[0][0]])
+        return my_list
 
 
 
@@ -349,21 +318,9 @@ def how_many_from_a_faculty():
 
 if __name__ == '__main__':
     pass
-    # see_how_many_at_a_event()
-    # see_how_many_at_a_department()
-    #see_events_for_member()
-    # see_how_many_from_a_study_year()
-    # delete_event_for_member()
-    # add_event_for_member()
-    # delete_member()
-    # replace_member_to_another_dep()
-     #how_many_from_a_faculty()
-    # see_how_many_at_a_department()
-    # see_events_for_member()
-    # delete_event_for_member()
-    # see_how_many_at_a_event()
-    # see_events_for_member('18')
-    see_how_many_from_a_study_year('I',True)
+    # see_events_for_member(18,True)
+    delete_event_for_member(18,1)
+
 
 
 

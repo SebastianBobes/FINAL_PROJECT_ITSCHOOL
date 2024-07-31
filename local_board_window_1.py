@@ -8,7 +8,10 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
+
+import euroavia_db
+import excel_writer
 
 
 class Ui_LocalBoard1Window(QMainWindow):
@@ -156,6 +159,9 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.comboBox_5.setObjectName("comboBox_5")
+        faculties = euroavia_db.read_parameter_from_db('faculties', 'id', 'name')
+        for index in faculties.keys():
+                self.comboBox_5.addItem("")
         self.label_6 = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_6.setGeometry(QtCore.QRect(530, 460, 31, 31))
         font = QtGui.QFont()
@@ -399,6 +405,9 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.comboBox_4.setObjectName("comboBox_4")
+        study_years = euroavia_db.read_sduty_years_from_config()
+        for item in study_years:
+                self.comboBox_4.addItem("")
         self.comboBox_3 = QtWidgets.QComboBox(parent=self.centralwidget)
         self.comboBox_3.setGeometry(QtCore.QRect(460, 310, 101, 31))
         self.comboBox_3.setStyleSheet("QComboBox {\n"
@@ -421,6 +430,9 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.comboBox_3.setObjectName("comboBox_3")
+        members = euroavia_db.read_parameter_from_db('members', 'id', 'last_name')
+        for index in members.keys():
+                self.comboBox_3.addItem("")
         self.comboBox_2 = QtWidgets.QComboBox(parent=self.centralwidget)
         self.comboBox_2.setGeometry(QtCore.QRect(570, 240, 101, 31))
         self.comboBox_2.setStyleSheet("QComboBox {\n"
@@ -443,6 +455,9 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.comboBox_2.setObjectName("comboBox_2")
+        dep = euroavia_db.read_parameter_from_db('departments', 'department_id', 'name')
+        for item in dep.keys():
+                self.comboBox_2.addItem("")
         self.comboBox_1 = QtWidgets.QComboBox(parent=self.centralwidget)
         self.comboBox_1.setGeometry(QtCore.QRect(320, 160, 101, 31))
         self.comboBox_1.setStyleSheet("QComboBox {\n"
@@ -465,6 +480,9 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    height: 10px; /* Schimbă 10px cu dimensiunea dorită */\n"
 "}")
         self.comboBox_1.setObjectName("comboBox_1")
+        events = euroavia_db.read_parameter_from_db('events', 'event_id', 'name')
+        for index in events.keys():
+                self.comboBox_1.addItem("")
         self.change_password_button = QtWidgets.QPushButton(parent=self.centralwidget)
         self.change_password_button.setGeometry(QtCore.QRect(20, 530, 131, 61))
         self.change_password_button.setStyleSheet("QPushButton {\n"
@@ -544,6 +562,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.comboBox_3.raise_()
         self.comboBox_2.raise_()
         self.comboBox_1.raise_()
+        self.red_1.raise_()
         self.change_password_button.raise_()
         self.next_page_button.raise_()
         LocalBoard1Window.setCentralWidget(self.centralwidget)
@@ -555,7 +574,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         _translate = QtCore.QCoreApplication.translate
         LocalBoard1Window.setWindowTitle(_translate("LocalBoard1Window", "MainWindow"))
         self.background_label.setText(_translate("LocalBoard1Window", "<html><head/><body><p><img src=\":/newPrefix/EUROAVIA_Logo.png\"/></p></body></html>"))
-        self.head_of_label.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#00ff00;\">YOU\'VE LOGGED IN AS:</span></p><p><span style=\" font-size:16pt; color:#ff474c;\">FUNCTION</span></p></body></html>"))
+        self.head_of_label.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#00ff00;\">YOU\'VE LOGGED IN AS:</span></p><p><span style=\" font-size:14pt; color:#ff474c;\">MEMBER OF LOCAL BOARD</span></p></body></html>"))
         self.label_4.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:14pt; color:#ffffff;\">?</span></p></body></html>"))
         self.label_7.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">1.Cati membrii vor participa la</span></p></body></html>"))
         self.label_8.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">2.Cati membrii s-au inscris in departamentul</span></p></body></html>"))
@@ -569,6 +588,24 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.exit_button.setText(_translate("LocalBoard1Window", "EXIT"))
         self.change_password_button.setText(_translate("LocalBoard1Window", "CHANGE PASSWORD"))
         self.next_page_button.setText(_translate("LocalBoard1Window", "NEXT PAGE"))
+        events = euroavia_db.read_parameter_from_db('events', 'event_id', 'name')
+        for index in events.keys():
+                self.comboBox_1.setItemText(index - 1, _translate("HeadsWindow", events[index]))
+
+        dep = euroavia_db.read_parameter_from_db('departments', 'department_id', 'name')
+        for index in dep.keys():
+                self.comboBox_2.setItemText(index - 1, _translate("HeadsWindow", dep[index]))
+        faculties = euroavia_db.read_parameter_from_db('faculties', 'id', 'name')
+        for index in faculties.keys():
+                self.comboBox_5.setItemText(index - 1, _translate("HeadsWindow", f"{index}.{faculties[index]}"))
+        study_years = euroavia_db.read_sduty_years_from_config()
+        for index in study_years:
+                self.comboBox_4.setItemText(int(index) - 1, _translate("HeadsWindow", study_years[index]))
+
+        members = euroavia_db.read_parameter_from_db('members', 'id', 'last_name')
+        x = list(members.keys())
+        for index, value in enumerate(x):
+                self.comboBox_3.setItemText(index, _translate("HeadsWindow", f"{value}.{members[value]}"))
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.background_label.setPixmap(qpixmap)
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
@@ -576,6 +613,89 @@ class Ui_LocalBoard1Window(QMainWindow):
         qpixmap = QPixmap("images/istockphoto-645085176-612x612-removebg-preview.png")
         self.thinking_man_label.setPixmap(qpixmap)
         self.exit_button.clicked.connect(exit)
+        self.green_1.clicked.connect(self.see_members_for_an_event)
+        self.red_1.clicked.connect(self.see_members_for_an_event_excel)
+        self.green_2.clicked.connect(self.see_members_from_a_dep)
+        self.red_2.clicked.connect(self.see_members_from_a_dep_excel)
+        self.green_3.clicked.connect(self.see_event_for_members)
+        self.green_4.clicked.connect(self.see_how_many_from_a_study_year)
+        self.red_4.clicked.connect(self.see_how_many_from_a_study_year_excel)
+        self.green_5.clicked.connect(self.see_how_many_from_faculty)
+        self.red_5.clicked.connect(self.see_how_many_from_faculty_excel)
+
+    def see_members_for_an_event(self):
+            event = self.comboBox_1.currentText()
+            members = euroavia_db.see_how_many_at_a_event(event)
+            QMessageBox.information(self, "Info", f"{members} membrii !")
+
+    def see_members_for_an_event_excel(self):
+            event = self.comboBox_1.currentText()
+            data = euroavia_db.see_how_many_at_a_event(event, excel=True)
+            excel_writer.create_excel('nr_participanti', data, 'event', 'NUMBER_OF_MEMBERS')
+            QMessageBox.information(self, "Info", f"Excelul a fost creat!")
+
+    def see_members_from_a_dep(self):
+            dep = self.comboBox_2.currentText()
+            members = euroavia_db.see_how_many_at_a_department(dep)
+            QMessageBox.information(self, "Info", f"{members} membrii !")
+
+    def see_members_from_a_dep_excel(self):
+            dep = self.comboBox_2.currentText()
+            data = euroavia_db.see_how_many_at_a_department(dep, excel=True)
+            excel_writer.create_excel('membrii_dep', data, 'DEPARTMENT', 'NUMBER_OF_MEMBERS')
+            QMessageBox.information(self, "Info", f"Excelul a fost creat!")
+
+    def see_event_for_members(self):
+            str = ''
+            for index in self.comboBox_3.currentText():
+                    if index != '.':
+                            str = str + index
+                    else:
+                            break
+            list = euroavia_db.see_events_for_member(str)
+            if len(list) == 0:
+                    QMessageBox.information(self, "Info", f"Membrul nu participa la niciun eveniment!")
+                    return False
+            str = ''
+            for index in list:
+                    str = str + '\n' + index
+            QMessageBox.information(self, "Info", f"Membrul participa la: {str}")
+
+    def see_how_many_from_a_study_year(self):
+            study_year = self.comboBox_4.currentText()
+            x = euroavia_db.see_how_many_from_a_study_year(study_year)
+            QMessageBox.information(self, "Info", f"{x}")
+
+    def see_how_many_from_a_study_year_excel(self):
+            study_year = self.comboBox_4.currentText()
+            data = euroavia_db.see_how_many_from_a_study_year(study_year, excel=True)
+            excel_writer.create_complex_exccel('member_from_a_study_year', data, 'AN', 'NUME', 'PRENUME')
+            QMessageBox.information(self, "Info", f"Excelul s-a creat!")
+
+    def get_if_for_faculty(self):
+            id = ''
+            for item in self.comboBox_5.currentText():
+                    if item != '.':
+                            id = id + item
+                    else:
+                            break
+            return id
+
+    def see_how_many_from_faculty(self):
+            id = self.get_if_for_faculty()
+            number_of_members = euroavia_db.how_many_from_a_faculty(int(id))
+            if int(number_of_members) == 1:
+                    QMessageBox.information(self, "Info", f"{number_of_members} membru!")
+            else:
+                    QMessageBox.information(self, "Info", f"{number_of_members} membrii!")
+            return id
+
+    def see_how_many_from_faculty_excel(self):
+            id = self.get_if_for_faculty()
+            data = euroavia_db.how_many_from_a_faculty(id, excel=True)
+            excel_writer.create_excel('members.faculty', data, 'FACULTATE', 'NUMAR_MEMBRII')
+            QMessageBox.information(self, "Info", f"Excelul a fost creat!")
+
 
 
 if __name__ == "__main__":

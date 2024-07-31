@@ -73,6 +73,10 @@ def read_function_from_file(user,path: str = 'auth.json'):
                     elif item == 'local_board':
                         return my_dict['position']
 
+# def change_password(user, password, path: str = 'auth.json'):
+#     with open(path, 'w'):
+
+
 
 
 

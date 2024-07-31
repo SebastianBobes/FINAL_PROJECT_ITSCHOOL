@@ -546,10 +546,7 @@ class Ui_HeadsWindow(QMainWindow):
 
         self.retranslateUi(HeadsWindow)
         QtCore.QMetaObject.connectSlotsByName(HeadsWindow)
-    def set_user(self, user,HeadsWindow):
-            self.user= user
-            _translate = QtCore.QCoreApplication.translate
-            HeadsWindow.setWindowTitle(_translate("HeadsWindow", "MainWindow"))
+
 
 
 
@@ -574,14 +571,14 @@ class Ui_HeadsWindow(QMainWindow):
         self.change_password_button.setText(_translate("HeadsWindow", "CHANGE PASSWORD"))
         events = euroavia_db.read_parameter_from_db('events', 'event_id', 'name')
         for index in events.keys():
-                self.comboBox_1.setItemText(index-1, _translate("HeadsWindow", events[index]))
+                self.comboBox_1.setItemText(index-1, _translate("HeadsWindow", f"{index}.{events[index]}"))
 
         dep = euroavia_db.read_parameter_from_db('departments', 'department_id', 'name')
         for index in dep.keys():
                 self.comboBox_2.setItemText(index-1, _translate("HeadsWindow", dep[index]))
         faculties = euroavia_db.read_parameter_from_db('faculties', 'id', 'name')
         for index in faculties.keys():
-                self.comboBox_5.setItemText(index - 1, _translate("HeadsWindow", faculties[index]))
+                self.comboBox_5.setItemText(index - 1, _translate("HeadsWindow", f"{index}.{faculties[index]}"))
         study_years = euroavia_db.read_sduty_years_from_config()
         for index in study_years:
                 self.comboBox_4.setItemText(int(index) - 1, _translate("HeadsWindow", study_years[index]))
@@ -605,6 +602,8 @@ class Ui_HeadsWindow(QMainWindow):
         self.green_3.clicked.connect(self.see_event_for_members)
         self.green_4.clicked.connect(self.see_how_many_from_a_study_year)
         self.red_4.clicked.connect(self.see_how_many_from_a_study_year_excel)
+        self.green_5.clicked.connect(self.see_how_many_from_faculty)
+        self.red_5.clicked.connect(self.see_how_many_from_faculty_excel)
     def see_members_for_an_event(self):
         event= self.comboBox_1.currentText()
         members = euroavia_db.see_how_many_at_a_event(event)
@@ -612,7 +611,7 @@ class Ui_HeadsWindow(QMainWindow):
     def see_members_for_an_event_excel(self):
         event = self.comboBox_1.currentText()
         data = euroavia_db.see_how_many_at_a_event(event, excel=True)
-        excel_writer.create_excel('nr_participanti',data,'event','number_of_members')
+        excel_writer.create_excel('nr_participanti',data,'EVENT','NUMBER_OF_MEMBERS')
         QMessageBox.information(self, "Info", f"Excelul a fost creat!")
 
     def see_members_from_a_dep(self):
@@ -622,7 +621,7 @@ class Ui_HeadsWindow(QMainWindow):
     def see_members_from_a_dep_excel(self):
         dep = self.comboBox_2.currentText()
         data = euroavia_db.see_how_many_at_a_department(dep, excel=True)
-        excel_writer.create_excel('membrii_dep', data, 'departament', 'number_of_members')
+        excel_writer.create_excel('membrii_dep', data, 'DEPARTMENT', 'NUMBER_OF_MEMBERS')
         QMessageBox.information(self, "Info", f"Excelul a fost creat!")
 
     def see_event_for_members(self):
@@ -648,8 +647,42 @@ class Ui_HeadsWindow(QMainWindow):
     def see_how_many_from_a_study_year_excel(self):
         study_year = self.comboBox_4.currentText()
         data = euroavia_db.see_how_many_from_a_study_year(study_year, excel=True)
-        excel_writer.create_excel('members.study.year', data, 'AN', 'members')
+        excel_writer.create_complex_exccel('member_from_a_study_year', data, 'AN','NUME', 'PRENUME')
         QMessageBox.information(self, "Info", f"Excelul s-a creat!")
+
+    def get_if_for_faculty(self):
+            id = ''
+            for item in self.comboBox_5.currentText():
+                    if item != '.':
+                            id = id + item
+                    else:
+                            break
+            return id
+
+    def see_how_many_from_faculty(self):
+            id = self.get_if_for_faculty()
+            number_of_members = euroavia_db.how_many_from_a_faculty(int(id))
+            if int(number_of_members)==1:
+                QMessageBox.information(self, "Info", f"{number_of_members} membru!")
+            else:
+                QMessageBox.information(self, "Info", f"{number_of_members} membrii!")
+            return id
+    def see_how_many_from_faculty_excel(self):
+            id = self.get_if_for_faculty()
+            data = euroavia_db.how_many_from_a_faculty(id, excel=True)
+            excel_writer.create_excel('members.faculty',data,'FACULTATE','NUMAR_MEMBRII')
+            QMessageBox.information(self, "Info", f"Excelul a fost creat!")
+
+
+
+
+
+
+
+
+
+
+
 
 
 

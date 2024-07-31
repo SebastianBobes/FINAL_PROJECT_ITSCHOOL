@@ -41,7 +41,7 @@ if __name__ == "__main__":
     ui_login_window.setupUi(ui_login_window)
     widget.addWidget(ui_login_window)
     ui_login_window.back_pushButton.clicked.connect(start_menu_window)
-    ui_login_window.back_pushButton.clicked.connect(ui_login_window.login)
+    # ui_login_window.back_pushButton.clicked.connect(ui_login_window.login)
 
 
     ui_menu_window = Ui_MenuWindow()

@@ -155,10 +155,14 @@ class Ui_LoginWindow(QMainWindow):
 
         self.pushButton.clicked.connect(self.login)
 
+    def get_username(self):
+        self.username = self.login()
+
+
+
 
 
     def login(self):
-        ui_heads_window = Ui_HeadsWindow()
         user = self.lineEdit.text()
         password = self.lineEdit_2.text()
         credentials = authentication.write_and_read_credentials()
