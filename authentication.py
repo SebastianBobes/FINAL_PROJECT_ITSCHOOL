@@ -73,8 +73,20 @@ def read_function_from_file(user,path: str = 'auth.json'):
                     elif item == 'local_board':
                         return my_dict['position']
 
-# def change_password(user, password, path: str = 'auth.json'):
-#     with open(path, 'w'):
+def change_pass(username: str, new_password: str, path:str = 'auth.json'):
+    with open(path, 'r') as f:
+        credentials = json.loads(f.read())
+    for lists in credentials.values():
+        for dict in lists:
+            if dict['user'] == username:
+                dict['password'] = new_password
+    with open(path, 'w') as f:
+        f.seek(0)
+        f.write(json.dumps((credentials), indent=4))
+
+
+
+
 
 
 

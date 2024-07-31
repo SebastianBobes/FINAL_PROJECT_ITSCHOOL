@@ -180,10 +180,14 @@ class Ui_LoginWindow(QMainWindow):
                     if user == my_dict['user']:
                         if password == my_dict['password']:
                             if item == 'heads':
-                                self.stacked_widget.setCurrentWidget(self.stacked_widget.widget(3))
+                                self.lineEdit.clear()
+                                self.lineEdit_2.clear()
+                                self.stacked_widget.setCurrentWidget(self.stacked_widget.widget(4))
                                 return True
                             elif item == 'local_board':
-                                self.stacked_widget.setCurrentWidget(self.stacked_widget.widget(4))
+                                self.lineEdit.clear()
+                                self.lineEdit_2.clear()
+                                self.stacked_widget.setCurrentWidget(self.stacked_widget.widget(5))
                                 return True
                         else:
                             QMessageBox.critical(self, "ERROR", "PAROLA INVALIDA!")

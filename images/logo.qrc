@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="newPrefix">
+    <file>laptop.png</file>
     <file>istockphoto-645085176-612x612-removebg-preview.png</file>
     <file>69-699228_our-team-team-icon-white-transparent-clipart.png</file>
     <file>team.png</file>
