@@ -199,6 +199,10 @@ class Ui_ChangePassWindow(QMainWindow):
         self.change_pass_pushButton.clicked.connect(self.change_pass)
 
     def change_pass(self):
+        """
+        method created to change the pass from auth file
+        :return:
+        """
         user = self.username_lineEdit.text()
         password = self.password_lineEdit.text()
         new_password_1 = self.new_password_lineEdit.text()

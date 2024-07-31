@@ -61,7 +61,7 @@
    <widget class="QPushButton" name="green_1">
     <property name="geometry">
      <rect>
-      <x>580</x>
+      <x>720</x>
       <y>150</y>
       <width>51</width>
       <height>51</height>
@@ -133,7 +133,7 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_8">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>70</x>
       <y>230</y>
       <width>101</width>
       <height>31</height>
@@ -151,7 +151,7 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>70</x>
+      <x>30</x>
       <y>310</y>
       <width>181</width>
       <height>31</height>
@@ -169,7 +169,7 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>70</x>
       <y>380</y>
       <width>161</width>
       <height>31</height>
@@ -187,7 +187,7 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>400</x>
       <y>380</y>
       <width>181</width>
       <height>31</height>
@@ -205,7 +205,7 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>690</x>
+      <x>680</x>
       <y>380</y>
       <width>20</width>
       <height>31</height>
@@ -223,8 +223,8 @@ QPushButton:pressed {
    <widget class="QPushButton" name="green_2">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>210</y>
+      <x>10</x>
+      <y>220</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -259,8 +259,8 @@ QPushButton:pressed {
    <widget class="QPushButton" name="green_4">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>360</y>
+      <x>10</x>
+      <y>370</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -296,7 +296,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>540</x>
-      <y>290</y>
+      <y>300</y>
       <width>51</width>
       <height>51</height>
      </rect>
@@ -341,7 +341,7 @@ QPushButton:pressed {
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images/logo.qrc">:/newPrefix/istockphoto-645085176-612x612-removebg-preview.png</pixmap>
+     <pixmap resource="../images/logo.qrc">:/newPrefix/istockphoto-645085176-612x612-removebg-preview.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -397,7 +397,7 @@ QPushButton:pressed {
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="images/logo.qrc">:/newPrefix/EUROAVIA_Logo.png</pixmap>
+     <pixmap resource="../images/logo.qrc">:/newPrefix/EUROAVIA_Logo.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -406,9 +406,9 @@ QPushButton:pressed {
    <widget class="QComboBox" name="comboBox_9">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>240</x>
       <y>380</y>
-      <width>101</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -437,9 +437,9 @@ QComboBox::down-arrow {
    <widget class="QComboBox" name="comboBox_8">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>210</x>
       <y>310</y>
-      <width>101</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -468,9 +468,9 @@ QComboBox::down-arrow {
    <widget class="QComboBox" name="comboBox_7">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>190</x>
       <y>230</y>
-      <width>101</width>
+      <width>141</width>
       <height>31</height>
      </rect>
     </property>
@@ -501,7 +501,7 @@ QComboBox::down-arrow {
      <rect>
       <x>130</x>
       <y>160</y>
-      <width>101</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -567,7 +567,7 @@ QPushButton:pressed {
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>240</x>
+      <x>290</x>
       <y>160</y>
       <width>211</width>
       <height>31</height>
@@ -585,7 +585,7 @@ QPushButton:pressed {
    <widget class="QComboBox" name="comboBox_6_2">
     <property name="geometry">
      <rect>
-      <x>450</x>
+      <x>510</x>
       <y>160</y>
       <width>101</width>
       <height>31</height>
@@ -616,7 +616,7 @@ QComboBox::down-arrow {
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>320</x>
+      <x>340</x>
       <y>230</y>
       <width>181</width>
       <height>31</height>
@@ -634,7 +634,7 @@ QComboBox::down-arrow {
    <widget class="QComboBox" name="comboBox_7_1">
     <property name="geometry">
      <rect>
-      <x>510</x>
+      <x>520</x>
       <y>230</y>
       <width>101</width>
       <height>31</height>
@@ -665,7 +665,7 @@ QComboBox::down-arrow {
    <widget class="QLabel" name="label_16">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>630</x>
       <y>230</y>
       <width>31</width>
       <height>31</height>
@@ -683,7 +683,7 @@ QComboBox::down-arrow {
    <widget class="QLabel" name="label_17">
     <property name="geometry">
      <rect>
-      <x>560</x>
+      <x>620</x>
       <y>160</y>
       <width>21</width>
       <height>31</height>
@@ -701,7 +701,7 @@ QComboBox::down-arrow {
    <widget class="QLabel" name="label_18">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>370</x>
       <y>310</y>
       <width>161</width>
       <height>31</height>
@@ -713,7 +713,7 @@ QComboBox::down-arrow {
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;din baza de date&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;din baza de date.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QComboBox" name="comboBox_9_2">
@@ -747,24 +747,6 @@ QComboBox::down-arrow {
 }</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_10">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>310</y>
-      <width>20</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <family>Bahnschrift</family>
-     </font>
-    </property>
-    <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-    </property>
-   </widget>
    <zorder>background_label</zorder>
    <zorder>head_of_label</zorder>
    <zorder>label_4</zorder>
@@ -794,10 +776,10 @@ QComboBox::down-arrow {
    <zorder>label_17</zorder>
    <zorder>label_18</zorder>
    <zorder>comboBox_9_2</zorder>
-   <zorder>label_10</zorder>
   </widget>
  </widget>
  <resources>
+  <include location="../images/logo.qrc"/>
   <include location="images/logo.qrc"/>
  </resources>
  <connections/>

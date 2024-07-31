@@ -1,6 +1,14 @@
 from openpyxl import Workbook
 
 def create_excel(name: str, data: list, first_column_name: str, second_column_name: str):
+    """
+    creates a simple excel with 2 columns
+    :param name: name of the excel file
+    :param data: the list of the info
+    :param first_column_name: the name of the first column
+    :param second_column_name: the name of the second column
+    :return:
+    """
     wb = Workbook()
     ws = wb.active
     ws['A1'] = first_column_name
@@ -11,6 +19,15 @@ def create_excel(name: str, data: list, first_column_name: str, second_column_na
     wb.save(f'{name}.xlsx')
 
 def create_complex_exccel(name: str, data: list, first_column_name: str= '', second_column_name: str = '', third_column_name: str =''):
+    """
+    creates an excel with more then 2 columns
+    :param name: name of the excel file
+    :param data: the list of the info
+    :param first_column_name: the name of the first column
+    :param second_column_name: the name of the second column
+    :param third_column_name: the name of the third column
+    :return:
+    """
     wb = Workbook()
 
     ws = wb.active

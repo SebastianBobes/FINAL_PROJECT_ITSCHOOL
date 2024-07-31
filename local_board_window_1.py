@@ -8,7 +8,7 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QMainWindow, QMessageBox
+from PyQt6.QtWidgets import QMessageBox, QMainWindow
 
 import euroavia_db
 import excel_writer
@@ -64,7 +64,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
         self.red_1 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.red_1.setGeometry(QtCore.QRect(540, 150, 51, 51))
+        self.red_1.setGeometry(QtCore.QRect(530, 150, 51, 51))
         self.red_1.setStyleSheet("QPushButton {\n"
 "    background-color: #FF474C; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
@@ -114,7 +114,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
         self.label_10 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_10.setGeometry(QtCore.QRect(580, 310, 51, 31))
+        self.label_10.setGeometry(QtCore.QRect(620, 310, 51, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         self.label_10.setFont(font)
@@ -126,7 +126,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.label_11.setFont(font)
         self.label_11.setObjectName("label_11")
         self.label_12 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_12.setGeometry(QtCore.QRect(480, 380, 131, 31))
+        self.label_12.setGeometry(QtCore.QRect(460, 380, 131, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         self.label_12.setFont(font)
@@ -138,7 +138,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.label_13.setFont(font)
         self.label_13.setObjectName("label_13")
         self.comboBox_5 = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.comboBox_5.setGeometry(QtCore.QRect(330, 460, 181, 31))
+        self.comboBox_5.setGeometry(QtCore.QRect(320, 460, 281, 31))
         self.comboBox_5.setStyleSheet("QComboBox {\n"
 "    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */\n"
 "    border-radius: 10px; /* Schimbă 10px cu raza dorită */\n"
@@ -163,7 +163,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         for index in faculties.keys():
                 self.comboBox_5.addItem("")
         self.label_6 = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(530, 460, 31, 31))
+        self.label_6.setGeometry(QtCore.QRect(620, 460, 31, 31))
         font = QtGui.QFont()
         font.setFamily("Bahnschrift")
         self.label_6.setFont(font)
@@ -245,7 +245,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.green_4.setText("")
         self.green_4.setObjectName("green_4")
         self.red_4 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.red_4.setGeometry(QtCore.QRect(80, 370, 51, 51))
+        self.red_4.setGeometry(QtCore.QRect(70, 370, 51, 51))
         self.red_4.setStyleSheet("QPushButton {\n"
 "    background-color: #FF474C; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
@@ -271,7 +271,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.red_4.setText("")
         self.red_4.setObjectName("red_4")
         self.green_5 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.green_5.setGeometry(QtCore.QRect(570, 450, 51, 51))
+        self.green_5.setGeometry(QtCore.QRect(650, 450, 51, 51))
         self.green_5.setStyleSheet("QPushButton {\n"
 "    background-color: #4DBB63; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
@@ -296,7 +296,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.green_5.setText("")
         self.green_5.setObjectName("green_5")
         self.red_5 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.red_5.setGeometry(QtCore.QRect(630, 450, 51, 51))
+        self.red_5.setGeometry(QtCore.QRect(710, 450, 51, 51))
         self.red_5.setStyleSheet("QPushButton {\n"
 "    background-color: #FF474C; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
@@ -322,7 +322,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.red_5.setText("")
         self.red_5.setObjectName("red_5")
         self.green_3 = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.green_3.setGeometry(QtCore.QRect(640, 300, 51, 51))
+        self.green_3.setGeometry(QtCore.QRect(680, 300, 51, 51))
         self.green_3.setStyleSheet("QPushButton {\n"
 "    background-color: #4DBB63; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
@@ -347,36 +347,11 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.green_3.setText("")
         self.green_3.setObjectName("green_3")
         self.thinking_man_label = QtWidgets.QLabel(parent=self.centralwidget)
-        self.thinking_man_label.setGeometry(QtCore.QRect(510, -10, 381, 261))
+        self.thinking_man_label.setGeometry(QtCore.QRect(540, -10, 351, 251))
         self.thinking_man_label.setText("")
         self.thinking_man_label.setPixmap(QtGui.QPixmap(":/newPrefix/istockphoto-645085176-612x612-removebg-preview.png"))
         self.thinking_man_label.setScaledContents(True)
         self.thinking_man_label.setObjectName("thinking_man_label")
-        self.exit_button = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.exit_button.setGeometry(QtCore.QRect(330, 530, 121, 61))
-        self.exit_button.setStyleSheet("QPushButton {\n"
-"    background-color: #FF474C; /* Background color */\n"
-"    border: none; /* Remove default border */\n"
-"    color: white; /* Text color */\n"
-"    width: 50px; /* Width of the button */\n"
-"    height: 50px; /* Height of the button */\n"
-"    border-radius: 25px; /* Rounded corners, half of width/height */\n"
-"    text-align: center; /* Center text */\n"
-"    font-size: 12px; /* Font size */\n"
-"    font-weight: bold; /* Bold text */\n"
-"    transition: all 0.2s ease; /* Smooth transition for all properties */\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: #FF5F5C; /* Slightly lighter but closer to the original color */\n"
-"    transform: scale(1.05); /* Increase size on hover */\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: #FF474A; /* Even darker background on press */\n"
-"    transform: scale(0.95); /* Slightly shrink button to give visual feedback */\n"
-"}")
-        self.exit_button.setObjectName("exit_button")
         self.euroavia_label = QtWidgets.QLabel(parent=self.centralwidget)
         self.euroavia_label.setGeometry(QtCore.QRect(280, -50, 241, 241))
         self.euroavia_label.setText("")
@@ -384,7 +359,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.euroavia_label.setScaledContents(True)
         self.euroavia_label.setObjectName("euroavia_label")
         self.comboBox_4 = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.comboBox_4.setGeometry(QtCore.QRect(370, 380, 101, 31))
+        self.comboBox_4.setGeometry(QtCore.QRect(370, 380, 81, 31))
         self.comboBox_4.setStyleSheet("QComboBox {\n"
 "    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */\n"
 "    border-radius: 10px; /* Schimbă 10px cu raza dorită */\n"
@@ -409,7 +384,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         for item in study_years:
                 self.comboBox_4.addItem("")
         self.comboBox_3 = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.comboBox_3.setGeometry(QtCore.QRect(460, 310, 101, 31))
+        self.comboBox_3.setGeometry(QtCore.QRect(450, 310, 161, 31))
         self.comboBox_3.setStyleSheet("QComboBox {\n"
 "    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */\n"
 "    border-radius: 10px; /* Schimbă 10px cu raza dorită */\n"
@@ -434,7 +409,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         for index in members.keys():
                 self.comboBox_3.addItem("")
         self.comboBox_2 = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.comboBox_2.setGeometry(QtCore.QRect(570, 240, 101, 31))
+        self.comboBox_2.setGeometry(QtCore.QRect(570, 240, 111, 31))
         self.comboBox_2.setStyleSheet("QComboBox {\n"
 "    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */\n"
 "    border-radius: 10px; /* Schimbă 10px cu raza dorită */\n"
@@ -459,7 +434,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         for item in dep.keys():
                 self.comboBox_2.addItem("")
         self.comboBox_1 = QtWidgets.QComboBox(parent=self.centralwidget)
-        self.comboBox_1.setGeometry(QtCore.QRect(320, 160, 101, 31))
+        self.comboBox_1.setGeometry(QtCore.QRect(310, 160, 101, 31))
         self.comboBox_1.setStyleSheet("QComboBox {\n"
 "    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */\n"
 "    border-radius: 10px; /* Schimbă 10px cu raza dorită */\n"
@@ -484,7 +459,7 @@ class Ui_LocalBoard1Window(QMainWindow):
         for index in events.keys():
                 self.comboBox_1.addItem("")
         self.change_password_button = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.change_password_button.setGeometry(QtCore.QRect(20, 530, 131, 61))
+        self.change_password_button.setGeometry(QtCore.QRect(520, 530, 131, 61))
         self.change_password_button.setStyleSheet("QPushButton {\n"
 "    background-color: #4DBB63; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
@@ -508,9 +483,38 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    transform: scale(0.95); /* Slightly shrink button to give visual feedback */\n"
 "}")
         self.change_password_button.setObjectName("change_password_button")
-        self.next_page_button = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.next_page_button.setGeometry(QtCore.QRect(650, 530, 131, 61))
-        self.next_page_button.setStyleSheet("QPushButton {\n"
+        self.back_pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.back_pushButton.setGeometry(QtCore.QRect(10, 540, 111, 51))
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        font.setPointSize(16)
+        font.setBold(True)
+        self.back_pushButton.setFont(font)
+        self.back_pushButton.setStyleSheet("QPushButton {\n"
+"    border-radius: 15px; /* Valoarea aceasta o poți ajusta pentru a obține rotunjimea dorită */\n"
+"    border: 2px solid #ADD8E6; /* Bordura butonului */\n"
+"    background-color:#ADD8E6; /* Culoarea de fundal a butonului */\n"
+"    color: white; /* Culoarea textului */\n"
+"    padding: 5px; /* Spațierea internă */\n"
+"}\n"
+"QPushButton:hover {\n"
+"    background-color: #87CEEB; /* Culoarea de fundal când mouse-ul este deasupra butonului */\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: #5FA9D0; /* Culoarea de fundal când butonul este apăsat */\n"
+"    border: 2px solid #5FA9D0; /* Bordura butonului când este apăsat */\n"
+"}")
+        self.back_pushButton.setObjectName("back_pushButton")
+        self.label_14 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_14.setGeometry(QtCore.QRect(420, 160, 31, 31))
+        font = QtGui.QFont()
+        font.setFamily("Bahnschrift")
+        self.label_14.setFont(font)
+        self.label_14.setObjectName("label_14")
+        self.next_page_pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.next_page_pushButton.setGeometry(QtCore.QRect(660, 530, 131, 61))
+        self.next_page_pushButton.setStyleSheet("QPushButton {\n"
 "    background-color: #4DBB63; /* Background color */\n"
 "    border: none; /* Remove default border */\n"
 "    color: white; /* Text color */\n"
@@ -532,11 +536,10 @@ class Ui_LocalBoard1Window(QMainWindow):
 "    background-color: #FF474A; /* Even darker background on press */\n"
 "    transform: scale(0.95); /* Slightly shrink button to give visual feedback */\n"
 "}")
-        self.next_page_button.setObjectName("next_page_button")
+        self.next_page_pushButton.setObjectName("next_page_pushButton")
         self.background_label.raise_()
         self.head_of_label.raise_()
         self.label_4.raise_()
-        self.red_1.raise_()
         self.label_8.raise_()
         self.label_9.raise_()
         self.label_5.raise_()
@@ -554,7 +557,6 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.red_5.raise_()
         self.green_3.raise_()
         self.thinking_man_label.raise_()
-        self.exit_button.raise_()
         self.euroavia_label.raise_()
         self.label_7.raise_()
         self.green_1.raise_()
@@ -562,9 +564,11 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.comboBox_3.raise_()
         self.comboBox_2.raise_()
         self.comboBox_1.raise_()
-        self.red_1.raise_()
         self.change_password_button.raise_()
-        self.next_page_button.raise_()
+        self.red_1.raise_()
+        self.back_pushButton.raise_()
+        self.label_14.raise_()
+        self.next_page_pushButton.raise_()
         LocalBoard1Window.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(LocalBoard1Window)
@@ -585,34 +589,38 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.label_12.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">s-au inscris?</span></p></body></html>"))
         self.label_13.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">5.Cati membrii sunt de la</span></p></body></html>"))
         self.label_6.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">?</span></p></body></html>"))
-        self.exit_button.setText(_translate("LocalBoard1Window", "EXIT"))
         self.change_password_button.setText(_translate("LocalBoard1Window", "CHANGE PASSWORD"))
-        self.next_page_button.setText(_translate("LocalBoard1Window", "NEXT PAGE"))
+        self.back_pushButton.setText(_translate("LocalBoard1Window", "MENU"))
+        self.label_14.setText(_translate("LocalBoard1Window", "<html><head/><body><p><span style=\" font-size:16pt; color:#ffffff;\">? </span></p></body></html>"))
+        self.next_page_pushButton.setText(_translate("LocalBoard1Window", "NEXT PAGE"))
+
         events = euroavia_db.read_parameter_from_db('events', 'event_id', 'name')
         for index in events.keys():
-                self.comboBox_1.setItemText(index - 1, _translate("HeadsWindow", events[index]))
+                self.comboBox_1.setItemText(index - 1, _translate("LocalBoard1Window", f"{index}.{events[index]}"))
 
         dep = euroavia_db.read_parameter_from_db('departments', 'department_id', 'name')
         for index in dep.keys():
-                self.comboBox_2.setItemText(index - 1, _translate("HeadsWindow", dep[index]))
+                self.comboBox_2.setItemText(index - 1, _translate("LocalBoard1Window", f" {index}. {dep[index]}"))
         faculties = euroavia_db.read_parameter_from_db('faculties', 'id', 'name')
         for index in faculties.keys():
-                self.comboBox_5.setItemText(index - 1, _translate("HeadsWindow", f"{index}.{faculties[index]}"))
+                self.comboBox_5.setItemText(index - 1, _translate("LocalBoard1Window", f"{index}.{faculties[index]}"))
         study_years = euroavia_db.read_sduty_years_from_config()
         for index in study_years:
-                self.comboBox_4.setItemText(int(index) - 1, _translate("HeadsWindow", study_years[index]))
+                self.comboBox_4.setItemText(int(index) - 1, _translate("LocalBoard1Window", study_years[index]))
 
-        members = euroavia_db.read_parameter_from_db('members', 'id', 'last_name')
+        members = euroavia_db.read_parameter_from_db('members', 'id', 'last_name', 'first_name')
         x = list(members.keys())
+        x.sort(reverse=False)
         for index, value in enumerate(x):
-                self.comboBox_3.setItemText(index, _translate("HeadsWindow", f"{value}.{members[value]}"))
+                first_name = members[value][0]
+                last_name = members[value][1]
+                self.comboBox_3.setItemText(index, _translate("LocalBoard1Window", f"{value}. {first_name} {last_name}"))
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.background_label.setPixmap(qpixmap)
         qpixmap = QPixmap("images/EUROAVIA_Logo.png")
         self.euroavia_label.setPixmap(qpixmap)
         qpixmap = QPixmap("images/istockphoto-645085176-612x612-removebg-preview.png")
         self.thinking_man_label.setPixmap(qpixmap)
-        self.exit_button.clicked.connect(exit)
         self.green_1.clicked.connect(self.see_members_for_an_event)
         self.red_1.clicked.connect(self.see_members_for_an_event_excel)
         self.green_2.clicked.connect(self.see_members_from_a_dep)
@@ -623,20 +631,29 @@ class Ui_LocalBoard1Window(QMainWindow):
         self.green_5.clicked.connect(self.see_how_many_from_faculty)
         self.red_5.clicked.connect(self.see_how_many_from_faculty_excel)
 
+    def get_id(self, text: str):
+            member_id = ''
+            for item in text:
+                    if item != '.':
+                            member_id = member_id + item
+                    else:
+                            break
+            return member_id
+
     def see_members_for_an_event(self):
-            event = self.comboBox_1.currentText()
-            members = euroavia_db.see_how_many_at_a_event(event)
+            event_id = self.get_id(self.comboBox_1.currentText())
+            members = euroavia_db.see_how_many_at_a_event(int(event_id))
             QMessageBox.information(self, "Info", f"{members} membrii !")
 
     def see_members_for_an_event_excel(self):
             event = self.comboBox_1.currentText()
             data = euroavia_db.see_how_many_at_a_event(event, excel=True)
-            excel_writer.create_excel('nr_participanti', data, 'event', 'NUMBER_OF_MEMBERS')
+            excel_writer.create_excel('nr_participanti', data, 'EVENT', 'NUMBER_OF_MEMBERS')
             QMessageBox.information(self, "Info", f"Excelul a fost creat!")
 
     def see_members_from_a_dep(self):
-            dep = self.comboBox_2.currentText()
-            members = euroavia_db.see_how_many_at_a_department(dep)
+            dep_id = self.get_id(self.comboBox_2.currentText())
+            members = euroavia_db.see_how_many_at_a_department(int(dep_id))
             QMessageBox.information(self, "Info", f"{members} membrii !")
 
     def see_members_from_a_dep_excel(self):
@@ -695,7 +712,6 @@ class Ui_LocalBoard1Window(QMainWindow):
             data = euroavia_db.how_many_from_a_faculty(id, excel=True)
             excel_writer.create_excel('members.faculty', data, 'FACULTATE', 'NUMAR_MEMBRII')
             QMessageBox.information(self, "Info", f"Excelul a fost creat!")
-
 
 
 if __name__ == "__main__":

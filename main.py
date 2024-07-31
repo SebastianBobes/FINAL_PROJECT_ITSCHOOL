@@ -65,10 +65,6 @@ if __name__ == "__main__":
 
 
 
-
-
-
-
     ui_local_board_window_1 = Ui_LocalBoard1Window()
     ui_local_board_window_1.setupUi(ui_local_board_window_1)
     widget.addWidget(ui_local_board_window_1)
@@ -82,16 +78,21 @@ if __name__ == "__main__":
     ui_form_window.back_pushButton.clicked.connect(start_menu_window)
     ui_menu_window.pushButton_2.clicked.connect(start_login_window)
     ui_menu_window.pushButton.clicked.connect(start_form_window)
-    ui_local_board_window_1.next_page_button.clicked.connect(show_local_board2_window)
+    ui_local_board_window_1.next_page_pushButton.clicked.connect(show_local_board2_window)
     ui_local_board_window_2.previous_page_button.clicked.connect(show_local_board1_window)
     ui_heads_window.change_password_button.clicked.connect(show_change_pass_window)
     ui_local_board_window_1.change_password_button.clicked.connect(show_change_pass_window)
+    ui_local_board_window_1.back_pushButton.clicked.connect(start_menu_window)
+
     ui_change_pass.back_pushButton.clicked.connect(start_menu_window)
     ui_heads_window.back_pushButton.clicked.connect(start_menu_window)
     widget.setCurrentWidget(ui_menu_window)
     widget.show()
 
     sys.exit(app.exec())
+
+
+
 
 
 

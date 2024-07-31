@@ -10,10 +10,10 @@ from tkinter import messagebox
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 from PyQt6.QtGui import QPixmap
-from PyQt6.QtWidgets import QMainWindow
+from PyQt6.QtWidgets import QMainWindow, QMessageBox
 
 import euroavia_db
-from Members import Member
+from members import Member
 
 
 
@@ -505,15 +505,19 @@ class Ui_FormWindow(QMainWindow):
         self.pushButton.clicked.connect(self.add_student)
 
     def add_student(self):
+        """
+        method created to add student with the data got from the application form
+        :return:
+        """
         events = []
 
         last_name = self.NUME_lineEdit.text()
         if not last_name.isalpha():
-            messagebox.showerror("ERROR", "NUME INVALID!")
+            QMessageBox.critical(self, "ERROR", "NUME INVALID!")
             self.NUME_lineEdit.clear()
             return False
         elif len(last_name) < 3 or len(last_name) > 20:
-            messagebox.showerror("ERROR", "NUME INVALID!")
+            QMessageBox.critical(self, "ERROR", "NUME INVALID!")
             self.NUME_lineEdit.clear()
             return False
         else:
@@ -521,11 +525,11 @@ class Ui_FormWindow(QMainWindow):
 
         first_name = self.PRENUME_lineEdit.text()
         if not first_name.isalpha():
-            messagebox.showerror("ERROR", "PRENUME INVALID!")
+            QMessageBox.critical(self, "ERROR", "PRENUME INVALID!")
             self.PRENUME_lineEdit.clear()
             return False
         elif len(first_name) < 3 or len(first_name) > 20:
-            messagebox.showerror("ERROR", "PRENUME INVALID!")
+            QMessageBox.critical(self, "ERROR", "PRENUME INVALID!")
             self.PRENUME_lineEdit.clear()
         else:
             first_name = first_name[0].upper() + first_name[1::].lower()
@@ -534,32 +538,32 @@ class Ui_FormWindow(QMainWindow):
         if len(middle_name) < 3 and middle_name.isalpha() == False:
             middle_name = ''
         elif len(middle_name) > 3 and middle_name.isalpha() == False:
-            messagebox.showerror("ERROR", "PRENUME 2 INVALID!")
+            QMessageBox.critical(self, "ERROR", "PRENUME 2 INVALID!")
             self.PRENUME_2_lineEdit.clear()
             return False
         elif len(middle_name) > 20:
-            messagebox.showerror("ERROR", "PRENUME 2 INVALID!")
+            QMessageBox.critical(self, "ERROR", "PRENUME 2 INVALID!")
             self.PRENUME_2_lineEdit.clear()
         else:
             middle_name = middle_name[0].upper() + middle_name[1::].lower()
 
         telephone_number = self.NUMAR_DE_TELEFON_lineEdit.text()
         if telephone_number.isdigit() == False:
-            messagebox.showerror("ERROR", "NUMAR DE TELEFON INVALID!")
+            QMessageBox.critical(self, "ERROR", "NUMAR DE TELEFON INVALID!")
             self.NUMAR_DE_TELEFON_lineEdit.clear()
             return False
         elif len(telephone_number) != 10 or telephone_number[0] != '0':
-            messagebox.showerror("ERROR", "NUMAR DE TELEFON INVALID!")
+            QMessageBox.critical(self, "ERROR", "NUMAR DE TELEFON INVALID!")
             self.NUMAR_DE_TELEFON_lineEdit.clear()
             return False
         elif euroavia_db.unicity_checker(telephone_number, 'telephone_number') == True:
-            messagebox.showerror("ERROR", "NUMARUL DE TELEFON EXISTA! INTRODUCETI ALTUL!")
+            QMessageBox.critical(self, "ERROR", "NUMARUL DE TELEFON EXISTA! INTRODUCETI ALTUL!")
             self.NUMAR_DE_TELEFON_lineEdit.clear()
             return False
 
         study_year = self.AN_DE_STUDIU_comboBox.currentText()
 
-        faculties = euroavia_db.read_faculties()
+        faculties = euroavia_db.read_parameter_from_db('faculties','id','name')
         faculties_swap = {v: k for k, v in faculties.items()}
 
         college = faculties_swap[self.FACULTATE_comboBox.currentText()]
@@ -577,15 +581,15 @@ class Ui_FormWindow(QMainWindow):
                         study_year=study_year, college=int(college),
                         department_id=department_id, events=events)
         if euroavia_db.unicity_checker(member.email, 'email_address') == True:
-            messagebox.showerror("ERROR", f"{last_name} {first_name} {middle_name} exista!")
+            QMessageBox.critical(self, "ERROR", f"{last_name} {first_name} {middle_name} exista!")
             self.NUME_lineEdit.clear()
             self.PRENUME_lineEdit.clear()
             self.PRENUME_2_lineEdit.clear()
             return False
         else:
             euroavia_db.insert_member_into_db(member=member)
-            euroavia_db.add_events_for_member(member=member, events=events)
-            messagebox.showinfo(title='', message=f"TE-AI INSCRIS CU SUCCES!")
+            euroavia_db.add_events_for_member_from_form(events=events)
+            QMessageBox.information(self, "Info", "TE-AI INSCRIS CU SUCCES!")
             self.NUME_lineEdit.clear()
             self.PRENUME_lineEdit.clear()
             self.PRENUME_2_lineEdit.clear()

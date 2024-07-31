@@ -2,9 +2,12 @@ import json
 import psycopg2 as ps
 from psycopg2._psycopg import cursor
 import excel_writer
-from Members import Member
+from members import Member
 
-def read_config(path: str = 'config.json'):
+def read_config(path: str = 'config.json')->dict:
+    """
+    returns config data in order to connect to DB
+    """
     try:
         with open(path, 'r') as f:
             config = json.loads(f.read())['config_db']
@@ -13,12 +16,26 @@ def read_config(path: str = 'config.json'):
         print(f"Error on reading config file! {e}")
 
 def read_sduty_years_from_config(path: str= 'config.json'):
-    with open(path, 'r') as f:
-        study_years = json.loads(f.read())['study_years']
-    return study_years
+    """
+    reads study years dict from config file
+    """
+    try:
+        with open(path, 'r') as f:
+            study_years = json.loads(f.read())['study_years']
+    except Exception as e:
+        print(f"Couldn't read study years from file {e}")
+    else:
+        return study_years
 
 
 def execute_query(sql_query: str, config: dict, show: bool = True):
+    """
+
+    :param sql_query: the string query
+    :param config: config file to connect with db
+    :param show: True if the result must be shown
+    :return: returns data if exists, else cursor
+    """
     try:
         with ps.connect(**config) as conn:
             with conn.cursor() as cursor:
@@ -31,7 +48,15 @@ def execute_query(sql_query: str, config: dict, show: bool = True):
         print(f"Failure on reading from database. Error: {e}")
         return False
 
-def read_parameter_from_db(table_name: str,id_name: str = 'event_id', name: str= 'name', name_2:str=''):
+def read_parameter_from_db(table_name: str,id_name: str = 'event_id', name: str= 'name', name_2:str='') ->dict:
+    """
+
+    :param table_name: the table where you want to read informations
+    :param id_name: the name of the id in the  table
+    :param name: variable 1 you want to read
+    :param name_2: variable 2 you want to read
+    :return: a dictionary with the info
+    """
     config  = read_config()
     if name_2 == '':
         sql_qury = (f"select {id_name},{name} from euroavia.{table_name}")
@@ -46,11 +71,16 @@ def read_parameter_from_db(table_name: str,id_name: str = 'event_id', name: str=
 
 
 def insert_member_into_db(member: Member) -> bool:
+    """
+
+    :param member: the member instance you want to insert in db
+    :return: True if succeed, else False
+    """
     config = read_config()
     sql_query = ("INSERT into euroavia.members (last_name, first_name, middle_name,telephone_number,study_year,college,department_id,email_address)"
                 f"values('{member.last_name}','{member.first_name}','{member.middle_name}','{member.telephone_number}','{member.study_year}', '{member.college}',{member.department_id}, '{member.email}')")
     try:
-        execute_query(sql_query,config)
+        execute_query(sql_query,config, show=False)
     except Exception as e:
         print(f"Error on inserting member into DB! {e}")
         return False
@@ -60,6 +90,10 @@ def insert_member_into_db(member: Member) -> bool:
 
 
 def read_last_id() -> int:
+    """
+    reads the last id from current db
+    :return: the id
+    """
     config = read_config()
     sql_query = ("SELECT id from euroavia.members")
     with ps.connect(**config) as conn:
@@ -72,6 +106,12 @@ def read_last_id() -> int:
             return list_of_members[-1]['id']
 
 def add_events_for_member(events:list,  path: str = "config.json") -> bool:
+    """
+
+    :param events: list of envent to be added
+    :param path: path of the config file
+    :return: True if succeed, else False
+    """
     config = read_config()
     try:
         with ps.connect(**config) as conn:
@@ -87,8 +127,28 @@ def add_events_for_member(events:list,  path: str = "config.json") -> bool:
     else:
         return True
 
+def add_events_for_member_from_form(events:list,  path: str = "config.json"):
+    """
+    function created to add events from a member chosen in form
+    :param events: list of events to be added
+    :param path: path of the config file
+    :return:
+    """
+    config = read_config()
+    with open(path, 'r') as f:
+        events_id = json.loads(f.read())['event_id']
+    for event in events:
+        sql_query = (f"INSERT into euroavia.events_members(event_id, member_id) values({events_id[event]},{read_last_id()})")
+        execute_query(sql_query, config, show=False)
+
 
 def unicity_checker(parameter: str, category: str) ->bool:
+    """
+    it checks the unicity of a parameter in a table
+    :param parameter: the varibale you want to check
+    :param category: the category where to find the same variable
+    :return:
+    """
     config = read_config()
     try:
         with ps.connect(**config) as conn:
@@ -110,6 +170,13 @@ def unicity_checker(parameter: str, category: str) ->bool:
 
 
 def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = True) -> dict | list:
+    """
+    function created to show the result of a execution of a query in an elegant way
+    :param initial_dict: the dict you want to transform
+    :param len_of_item: the len of the tuple inside the dict
+    :param printed: True if you want to be printed, else False
+    :return:
+    """
     second_dict = {}
     if len_of_item == 1:
         second_list = []
@@ -136,6 +203,12 @@ def show_dict_stylish(initial_dict: list, len_of_item: int = 2, printed: bool = 
 
 
 def see_how_many_at_a_event(event_id: int, excel: bool = False):
+    """
+    function created to see how many persons joined the event id given
+    :param event_id: id of the event
+    :param excel: True if data to be writen in excel, else False
+    :return: data(list of every id and number of persons) for the excel or just the number of persons
+    """
     config = read_config()
     data =[]
     if excel:
@@ -156,7 +229,13 @@ def see_how_many_at_a_event(event_id: int, excel: bool = False):
 
 
 
-def see_how_many_at_a_department(dep_id,excel: bool = False):
+def see_how_many_at_a_department(dep_id,excel: bool = False) ->list|int:
+    """
+
+    :param dep_id: the id of the department
+    :param excel: True if the data to be writen in excel, else, False
+    :return: data(list of every id and number of persons) for the excel or just the number of persons
+    """
     config = read_config()
     data = []
     if excel:
@@ -176,7 +255,13 @@ def see_how_many_at_a_department(dep_id,excel: bool = False):
 
 
 
-def see_events_for_member(member_id: int,delete: bool =False):
+def see_events_for_member(member_id: int,delete: bool =False) -> dict|list:
+    """
+    function created to see the events joined by a member
+    :param member_id: id of the member
+    :param delete: True if you want to save a dictionary with the id of member and if of events joined bu that member
+    :return: list with events ids or a dict with the id of member and events
+    """
     config = read_config()
 
     sql_query = (f"select event_id from euroavia.events_members where member_id ={int(member_id)}")
@@ -203,7 +288,13 @@ def see_events_for_member(member_id: int,delete: bool =False):
 
 
 
-def see_how_many_from_a_study_year(study_year: str, excel: bool = False):
+def see_how_many_from_a_study_year(study_year: str, excel: bool = False) -> list|int:
+    """
+
+    :param study_year: the study year you want to check
+    :param excel: True if data to be writen in excel, else False
+    :return: data for the excel or number of members from that study year
+    """
     config = read_config()
     if excel:
         sql_query = (f"select id, last_name, first_name from euroavia.members where study_year = '{study_year}' ")
@@ -223,6 +314,12 @@ def see_how_many_from_a_study_year(study_year: str, excel: bool = False):
 
 
 def delete_event_for_member(member_id: int,event_id : int):
+    """
+    delete the events the member is not joining anymore
+    :param member_id: id of the member
+    :param event_id: the id of the event you want to delete from db
+    :return: True if succeed, else False
+    """
     events = see_events_for_member(member_id,True)[member_id]
     if event_id not in events:
         return False
@@ -237,7 +334,13 @@ def delete_event_for_member(member_id: int,event_id : int):
         return True
 
 
-def add_event_for_member(member_id: int, event_id: int):
+def add_event_for_member(member_id: int, event_id: int) -> bool:
+    """
+    add event for a member to join
+    :param member_id:id of the member
+    :param event_id: the id of the event member is joining
+    :return: True if succed, else False
+    """
     config = read_config()
     id_and_events = see_events_for_member(member_id)
     events = see_events_for_member(member_id,True)[member_id]
@@ -252,23 +355,38 @@ def add_event_for_member(member_id: int, event_id: int):
             print(f"Failed on adding event for member! {e} ")
         else:
             print("Eveniment adaugat!")
+            return True
 
 
 
 
-def delete_member(member_id: int):
+def delete_member(member_id: int) -> bool:
+    """
+    delete member from db
+    :param member_id: id of the member to be deleted
+    :return: True if succed, else False
+    """
     config = read_config()
     sql_query = (f"delete from euroavia.members where id = {member_id}")
     try:
         execute_query(sql_query, config, False)
     except Exception as e:
         print(f"Error on deleting member! {e}")
+        return False
     else:
         print("Membrul a fost sters!")
+        return True
 
 
 
-def replace_member_to_another_dep(member_id: int, dep_id: int):
+def replace_member_to_another_dep(member_id: int, dep_id: int) -> bool:
+
+    """
+    update the department of a member
+    :param member_id: id of the member
+    :param dep_id: id of the department
+    :return: True if succed, else False
+    """
 
     config = read_config()
     sql_query = (f"select department_id from euroavia.members where id={member_id} ")
@@ -281,6 +399,7 @@ def replace_member_to_another_dep(member_id: int, dep_id: int):
             execute_query(sql_query,config, False)
         except Exception as e:
             print(f"Error on switching dep for member {e}")
+            return False
         else:
             print("Ati schimbat departamentul membrului!")
             return True
@@ -288,6 +407,12 @@ def replace_member_to_another_dep(member_id: int, dep_id: int):
 
 
 def how_many_from_a_faculty(id: int, excel: bool = False):
+    """
+    function created to see the number of members from a specific faculty, or from all of them
+    :param id: the id of the faculty
+    :param excel: True if you want all the data to be wirten in excel, else False
+    :return: integer(number of members) or a list with faculties and number of members for each faculty
+    """
     config = read_config()
     faculties = read_parameter_from_db('faculties', 'id', 'name')
     if excel == False:
@@ -306,20 +431,6 @@ def how_many_from_a_faculty(id: int, excel: bool = False):
         return my_list
 
 
-
-
-
-
-
-
-
-
-
-
-if __name__ == '__main__':
-    pass
-    # see_events_for_member(18,True)
-    delete_event_for_member(18,1)
 
 
 
