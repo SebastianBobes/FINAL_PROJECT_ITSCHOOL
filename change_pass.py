@@ -225,19 +225,29 @@ class Ui_ChangePassWindow(QMainWindow):
                                 QMessageBox.critical(self, "ERROR", "PAROLELE NU SE POTRIVESC!")
                                 self.nre_password_2_lineEdit.clear()
                                 self.new_password_lineEdit.clear()
+                                return False
                             else:
+                                if new_password_1 == password:
+                                    QMessageBox.critical(self, "ERROR", "SCHIMBA PAROLA!")
+                                    self.nre_password_2_lineEdit.clear()
+                                    self.new_password_lineEdit.clear()
+                                    return False
+
                                 if len(new_password_1) < 5:
                                     QMessageBox.critical(self, "ERROR", "PAROLA PREA SCURTA!")
                                     self.nre_password_2_lineEdit.clear()
                                     self.new_password_lineEdit.clear()
+                                    return False
                                 elif new_password_1.isdigit() == True:
                                     QMessageBox.critical(self, "ERROR", "PAROLA NU POATE CONTINE DOAR NUMERE!")
                                     self.nre_password_2_lineEdit.clear()
                                     self.new_password_lineEdit.clear()
+                                    return False
                                 elif new_password_1.isalpha() == True:
                                     QMessageBox.critical(self, "ERROR", "PAROLA NU POATE CONTINE DOAR LITERE")
                                     self.nre_password_2_lineEdit.clear()
                                     self.new_password_lineEdit.clear()
+                                    return False
                                 else:
                                     authentication.change_pass(user,new_password_1)
                                     QMessageBox.information(self, "Info", f"Parola a fost schimbata!")
@@ -250,6 +260,7 @@ class Ui_ChangePassWindow(QMainWindow):
                         else:
                             QMessageBox.critical(self, "ERROR", "PAROLA INCORECTA!")
                             self.password_lineEdit.clear()
+                            return False
 
 
 
