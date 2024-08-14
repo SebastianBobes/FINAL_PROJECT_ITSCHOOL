@@ -138,9 +138,9 @@
    <widget class="QCheckBox" name="AcWo_checkBox">
     <property name="geometry">
      <rect>
-      <x>550</x>
+      <x>540</x>
       <y>230</y>
-      <width>191</width>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
@@ -154,10 +154,34 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QCheckBox {
-	font: 700 14pt &quot;Segoe UI&quot;;
-    color: white; 
+    font: 700 14pt &quot;Segoe UI&quot;;
+    color: white;
 }
-</string>
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid white;
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:checked:hover {
+    border: 2px solid lightgray;
+}
+
+QCheckBox::indicator:unchecked:pressed,
+QCheckBox::indicator:checked:pressed {
+    border: 2px solid gray;
+}</string>
     </property>
     <property name="text">
      <string notr="true">AirCraft Workshop</string>
@@ -391,18 +415,42 @@ QComboBox::down-arrow {
    <widget class="QCheckBox" name="DroWo_checkBox">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>390</x>
       <y>340</y>
-      <width>171</width>
+      <width>191</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QCheckBox {
-	font: 700 14pt &quot;Segoe UI&quot;;
-    color: white; 
+    font: 700 14pt &quot;Segoe UI&quot;;
+    color: white;
 }
-</string>
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid white;
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:checked:hover {
+    border: 2px solid lightgray;
+}
+
+QCheckBox::indicator:unchecked:pressed,
+QCheckBox::indicator:checked:pressed {
+    border: 2px solid gray;
+}</string>
     </property>
     <property name="text">
      <string>Drone Workshop</string>
@@ -411,18 +459,42 @@ QComboBox::down-arrow {
    <widget class="QCheckBox" name="RoWo_checkBox">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>570</x>
       <y>380</y>
-      <width>161</width>
+      <width>191</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QCheckBox {
-	font: 700 14pt &quot;Segoe UI&quot;;
-    color: white; 
+    font: 700 14pt &quot;Segoe UI&quot;;
+    color: white;
 }
-</string>
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid white;
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:checked:hover {
+    border: 2px solid lightgray;
+}
+
+QCheckBox::indicator:unchecked:pressed,
+QCheckBox::indicator:checked:pressed {
+    border: 2px solid gray;
+}</string>
     </property>
     <property name="text">
      <string>Rocket Workshop</string>
@@ -439,10 +511,34 @@ QComboBox::down-arrow {
     </property>
     <property name="styleSheet">
      <string notr="true">QCheckBox {
-	font: 700 14pt &quot;Segoe UI&quot;;
-    color: white; 
+    font: 700 14pt &quot;Segoe UI&quot;;
+    color: white;
 }
-</string>
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid white;
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:checked:hover {
+    border: 2px solid lightgray;
+}
+
+QCheckBox::indicator:unchecked:pressed,
+QCheckBox::indicator:checked:pressed {
+    border: 2px solid gray;
+}</string>
     </property>
     <property name="text">
      <string>Head Start Session</string>
@@ -451,18 +547,42 @@ QComboBox::down-arrow {
    <widget class="QCheckBox" name="WiCa_checkBox">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>590</x>
       <y>310</y>
-      <width>141</width>
+      <width>171</width>
       <height>20</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QCheckBox {
-	font: 700 14pt &quot;Segoe UI&quot;;
-    color: white; 
+    font: 700 14pt &quot;Segoe UI&quot;;
+    color: white;
 }
-</string>
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    border: 2px solid white;
+    background-color: transparent;
+}
+
+QCheckBox::indicator:checked {
+    border: 2px solid white;
+    background-color: white;
+}
+
+QCheckBox::indicator:unchecked:hover,
+QCheckBox::indicator:checked:hover {
+    border: 2px solid lightgray;
+}
+
+QCheckBox::indicator:unchecked:pressed,
+QCheckBox::indicator:checked:pressed {
+    border: 2px solid gray;
+}</string>
     </property>
     <property name="text">
      <string>Winter Camp</string>
@@ -565,8 +685,8 @@ QComboBox::down-arrow {
    <widget class="QLabel" name="label_9_LOGO">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>350</y>
+      <x>550</x>
+      <y>390</y>
       <width>251</width>
       <height>251</height>
      </rect>
@@ -587,7 +707,7 @@ QComboBox::down-arrow {
       <x>-20</x>
       <y>-10</y>
       <width>831</width>
-      <height>591</height>
+      <height>621</height>
      </rect>
     </property>
     <property name="text">
@@ -661,8 +781,8 @@ QComboBox::down-arrow {
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>390</x>
-      <y>460</y>
+      <x>350</x>
+      <y>490</y>
       <width>161</width>
       <height>71</height>
      </rect>
@@ -695,6 +815,43 @@ QPushButton:pressed {
      <string>INSCRIE-TE!</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="back_pushButton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>530</y>
+      <width>101</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <pointsize>16</pointsize>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    border-radius: 15px; /* Valoarea aceasta o poți ajusta pentru a obține rotunjimea dorită */
+    border: 2px solid #ADD8E6; /* Bordura butonului */
+    background-color:#ADD8E6; /* Culoarea de fundal a butonului */
+    color: white; /* Culoarea textului */
+    padding: 5px; /* Spațierea internă */
+}
+QPushButton:hover {
+    background-color: #87CEEB; /* Culoarea de fundal când mouse-ul este deasupra butonului */
+}
+
+QPushButton:pressed {
+    background-color: #5FA9D0; /* Culoarea de fundal când butonul este apăsat */
+    border: 2px solid #5FA9D0; /* Bordura butonului când este apăsat */
+}</string>
+    </property>
+    <property name="text">
+     <string>MENU</string>
+    </property>
+   </widget>
    <zorder>label_BACKGROUND</zorder>
    <zorder>label_9_LOGO</zorder>
    <zorder>label</zorder>
@@ -722,18 +879,8 @@ QPushButton:pressed {
    <zorder>label_11</zorder>
    <zorder>label_12</zorder>
    <zorder>pushButton</zorder>
+   <zorder>back_pushButton</zorder>
   </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <resources>
   <include location="logo.qrc"/>

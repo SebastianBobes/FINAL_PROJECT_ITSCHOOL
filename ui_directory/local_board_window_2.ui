@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>LocalBoard2Window</class>
+ <widget class="QMainWindow" name="LocalBoard2Window">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="background_label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>811</width>
+      <height>621</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/newPrefix/EUROAVIA_Logo.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="head_of_label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>241</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#00ff00;&quot;&gt;YOU'VE LOGGED IN AS:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ff474c;&quot;&gt;FUNCTION&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="green_1">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>150</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4DBB63; /* Background color */
+    border: none; /* Remove default border */
+    color: black; /* Text color */
+    width: 150px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border-radius: 25px; /* Rounded corners, half of width/height */
+    text-align: center; /* Center text */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Darker background on hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Even darker background on press */
+    transform: scale(0.95); /* Slightly shrink button to give visual feedback */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>160</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>160</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;6.Membrul&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>230</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;7.Membrul&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_9">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>310</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;8.Sterge membrul &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>380</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;9.Muta membrul&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>400</x>
+      <y>380</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;la departamentul &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>380</y>
+      <width>20</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="green_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>220</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4DBB63; /* Background color */
+    border: none; /* Remove default border */
+    color: black; /* Text color */
+    width: 150px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border-radius: 25px; /* Rounded corners, half of width/height */
+    text-align: center; /* Center text */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Darker background on hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Even darker background on press */
+    transform: scale(0.95); /* Slightly shrink button to give visual feedback */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="green_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4DBB63; /* Background color */
+    border: none; /* Remove default border */
+    color: black; /* Text color */
+    width: 150px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border-radius: 25px; /* Rounded corners, half of width/height */
+    text-align: center; /* Center text */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Darker background on hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Even darker background on press */
+    transform: scale(0.95); /* Slightly shrink button to give visual feedback */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="green_3">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>300</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4DBB63; /* Background color */
+    border: none; /* Remove default border */
+    color: black; /* Text color */
+    width: 150px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border-radius: 25px; /* Rounded corners, half of width/height */
+    text-align: center; /* Center text */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+QPushButton:hover {
+    background-color: #45a049; /* Darker background on hover */
+}
+
+QPushButton:pressed {
+    background-color: #3e8e41; /* Even darker background on press */
+    transform: scale(0.95); /* Slightly shrink button to give visual feedback */
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="thinking_man_label">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>-10</y>
+      <width>381</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../images/logo.qrc">:/newPrefix/istockphoto-645085176-612x612-removebg-preview.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="exit_button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>530</y>
+      <width>121</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #FF474C; /* Background color */
+    border: none; /* Remove default border */
+    color: white; /* Text color */
+    width: 50px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border-radius: 25px; /* Rounded corners, half of width/height */
+    text-align: center; /* Center text */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+QPushButton:hover {
+    background-color: #FF5F5C; /* Slightly lighter but closer to the original color */
+    transform: scale(1.05); /* Increase size on hover */
+}
+
+QPushButton:pressed {
+    background-color: #FF474A; /* Even darker background on press */
+    transform: scale(0.95); /* Slightly shrink button to give visual feedback */
+}</string>
+    </property>
+    <property name="text">
+     <string>EXIT</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="euroavia_label">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>-50</y>
+      <width>241</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../images/logo.qrc">:/newPrefix/EUROAVIA_Logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_9">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>380</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_8">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>310</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_7">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>230</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_6">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>160</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="previous_page_button">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>530</y>
+      <width>131</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+    background-color: #4DBB63; /* Background color */
+    border: none; /* Remove default border */
+    color: white; /* Text color */
+    width: 50px; /* Width of the button */
+    height: 50px; /* Height of the button */
+    border-radius: 25px; /* Rounded corners, half of width/height */
+    text-align: center; /* Center text */
+    font-size: 12px; /* Font size */
+    font-weight: bold; /* Bold text */
+    transition: all 0.2s ease; /* Smooth transition for all properties */
+}
+
+QPushButton:hover {
+    background-color: #FF5F5C; /* Slightly lighter but closer to the original color */
+    transform: scale(1.05); /* Increase size on hover */
+}
+
+QPushButton:pressed {
+    background-color: #FF474A; /* Even darker background on press */
+    transform: scale(0.95); /* Slightly shrink button to give visual feedback */
+}</string>
+    </property>
+    <property name="text">
+     <string>PREVIOUS PAGE</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_14">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>160</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;nu va mai participa la:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_6_2">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>160</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_15">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>230</y>
+      <width>181</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;va mai participa la:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_7_1">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>230</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>230</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_17">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>160</y>
+      <width>21</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_18">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>310</y>
+      <width>161</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Bahnschrift</family>
+     </font>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; color:#ffffff;&quot;&gt;din baza de date.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBox_9_2">
+    <property name="geometry">
+     <rect>
+      <x>570</x>
+      <y>380</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QComboBox {
+    border: 2px solid gray; /* Schimbă gray cu culoarea dorită */
+    border-radius: 10px; /* Schimbă 10px cu raza dorită */
+    padding: 5px; /* Schimbă 5px cu spațierea dorită */
+    background: white; /* Schimbă white cu culoarea de fundal dorită */
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px; /* Schimbă 15px cu lățimea dorită pentru săgeata dropdown */
+    border: none; /* Elimină bordura din jurul săgeții dropdown */
+}
+
+QComboBox::down-arrow {
+    image: url(down_arrow.png); /* Asigură-te că ai o imagine pentru săgeata dropdown */
+    width: 10px; /* Schimbă 10px cu dimensiunea dorită */
+    height: 10px; /* Schimbă 10px cu dimensiunea dorită */
+}</string>
+    </property>
+   </widget>
+   <zorder>background_label</zorder>
+   <zorder>head_of_label</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_8</zorder>
+   <zorder>label_9</zorder>
+   <zorder>label_11</zorder>
+   <zorder>label_12</zorder>
+   <zorder>label_6</zorder>
+   <zorder>green_2</zorder>
+   <zorder>green_4</zorder>
+   <zorder>green_3</zorder>
+   <zorder>thinking_man_label</zorder>
+   <zorder>exit_button</zorder>
+   <zorder>euroavia_label</zorder>
+   <zorder>label_7</zorder>
+   <zorder>green_1</zorder>
+   <zorder>comboBox_9</zorder>
+   <zorder>comboBox_8</zorder>
+   <zorder>comboBox_7</zorder>
+   <zorder>comboBox_6</zorder>
+   <zorder>previous_page_button</zorder>
+   <zorder>label_14</zorder>
+   <zorder>comboBox_6_2</zorder>
+   <zorder>label_15</zorder>
+   <zorder>comboBox_7_1</zorder>
+   <zorder>label_16</zorder>
+   <zorder>label_17</zorder>
+   <zorder>label_18</zorder>
+   <zorder>comboBox_9_2</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../images/logo.qrc"/>
+  <include location="images/logo.qrc"/>
+ </resources>
+ <connections/>
+</ui>
